@@ -1,5 +1,7 @@
+import React from "react";
+
 function App() {
-  return <div>Hi, there</div>;
+  return <div className="text-red-500">Hi, there</div>;
 }
 
 export default App;
