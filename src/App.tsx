@@ -1,6 +1,8 @@
 import "./App.css";
 import { createServer } from "miragejs";
 import places from "../mockData/places.json";
+import searchPrediction from "../mockData/searchPrediction.json";
+import Home from "./Pages/Home";
 
 // mock-server
 createServer({
@@ -8,13 +10,17 @@ createServer({
     this.get("/api/places", () => {
       return places;
     });
+
+    this.get("/api/searchPrediction", () => {
+      return searchPrediction;
+    });
   },
 });
 
 function App() {
   return (
     <>
-      <h1>Hello, World!</h1>
+      <Home />
     </>
   );
 }
