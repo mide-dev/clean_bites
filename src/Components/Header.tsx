@@ -2,13 +2,11 @@ import { Link } from "react-router-dom";
 
 import Logo from "./Logo";
 import Search from "./Search";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import profile from "../assets/profile.svg";
-import hamburger from "../assets/hamburger.svg";
+import Account from "./Account";
 
 function Header() {
   return (
-    <header className="my-8 md:my-12 flex flex-col items-center md:flex-row md:justify-between gap-x-8 ">
+    <header className="my-8 md:my-6 flex flex-col items-center md:flex-row md:justify-between gap-x-8 ">
       <Link to="/">
         <Logo className="w-[6.5rem] fill-custom_accent mb-6 md:mb-0" />
       </Link>
@@ -23,15 +21,7 @@ function Header() {
             <Link to="why-us">Why us</Link>
           </ul>
         </nav>
-        <div className="hidden md:flex gap-x-2 cursor-pointer py-2 px-2 rounded-full border-[1px] border-custom_primary_100">
-          <img src={hamburger} alt="menu" className="w-5" />
-          <Avatar className=" w-6 h-6">
-            <AvatarImage src="" />
-            <AvatarFallback>
-              <img src={profile} alt="account" className="w-full" />
-            </AvatarFallback>
-          </Avatar>
-        </div>
+        <Account />
       </div>
     </header>
   );
