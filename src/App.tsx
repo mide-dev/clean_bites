@@ -3,7 +3,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  Link,
 } from "react-router-dom";
 
 import "./App.css";
@@ -11,7 +10,9 @@ import { createServer } from "miragejs";
 import places from "../mockData/places.json";
 import searchPrediction from "../mockData/searchPrediction.json";
 import Layout from "./Components/Layout";
-import Home from "./Pages/Home";
+import Restaurants from "./Pages/Restaurants";
+import TopPicks from "./Pages/TopPicks";
+import WhyUs from "./Pages/WhyUs";
 
 // mock-server
 createServer({
@@ -29,7 +30,9 @@ createServer({
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
+      <Route index element={<Restaurants />} />
+      <Route path="top-picks" element={<TopPicks />} />
+      <Route path="why-us" element={<WhyUs />} />
     </Route>
   )
 );

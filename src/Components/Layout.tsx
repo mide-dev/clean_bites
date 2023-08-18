@@ -3,7 +3,8 @@ import Header from "./Header";
 
 function Layout() {
   return (
-    <div className="site-wrapper container">
+    // site-wrapper
+    <div className="container">
       <Header />
       <main>
         <Outlet />
