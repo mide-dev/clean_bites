@@ -19,7 +19,7 @@ function Search({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
           className="w-full md:rounded-r-full py-3 px-6 focus:outline-none 
           border-r-[0.5px] border-y-[0.5px] border-gray-100"
           type="text"
-          placeholder="London"
+          placeholder="Location"
         />
         <span className="absolute w-[1px] h-[70%] bg-gray-300 top-[50%] left-[0px] -translate-y-[50%]"></span>
       </div>
