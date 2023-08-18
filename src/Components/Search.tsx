@@ -1,19 +1,23 @@
 // import { useEffect } from "react";
 import search from "../assets/search.svg";
+import { HTMLAttributes } from "react";
 
-function Search() {
+function Search({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className="flex flex-1 relative drop-shadow-md">
+    <div
+      className={`flex flex-1 relative drop-shadow-md ${className}`}
+      {...props}
+    >
       <input
-        className="w-full rounded-full md:rounded-none md:rounded-l-full inline-block py-3 px-6 
+        className="w-full rounded-full lg:rounded-none lg:rounded-l-full inline-block py-3 px-6 
             focus:outline-none border-l-[0.5px] border-y-[0.5px] border-gray-100"
         type="text"
         placeholder="e.g. pizza, sushi, pasta"
       />
-      <div className="hidden md:block relative w-full">
+      <div className="hidden lg:block relative w-full">
         <input
-          className="w-full md:rounded-none md:rounded-r-full py-3 px-6 
-            focus:outline-none border-r-[0.5px] border-y-[0.5px] border-gray-100"
+          className="w-full md:rounded-r-full py-3 px-6 focus:outline-none 
+          border-r-[0.5px] border-y-[0.5px] border-gray-100"
           type="text"
           placeholder="London"
         />
