@@ -10,15 +10,13 @@ function Search({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
       {...props}
     >
       <input
-        className="w-full rounded-full lg:rounded-none lg:rounded-l-full inline-block py-3 px-6 
-            focus:outline-none border-l-[0.5px] border-y-[0.5px] border-gray-100"
+        className="search-bar rounded-full lg:rounded-none lg:rounded-l-full border-l-[0.5px] border-y-[0.5px]"
         type="text"
         placeholder="e.g. pizza, sushi, pasta"
       />
       <div className="hidden lg:block relative w-full">
         <input
-          className="w-full md:rounded-r-full py-3 px-6 focus:outline-none 
-          border-r-[0.5px] border-y-[0.5px] border-gray-100"
+          className="search-bar md:rounded-r-full focus:outline-none border-r-[0.5px] border-y-[0.5px] "
           type="text"
           placeholder="Location"
         />
