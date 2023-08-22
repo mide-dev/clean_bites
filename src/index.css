@@ -36,15 +36,17 @@
     --radius: 0.5rem;
 
     --clr-accent: #ff4566;
+    --clr-primary-50: #cacaca;
     --clr-primary-100: #858585;
     --clr-primary-200: #626262;
+    --clr-primary-300: #575757;
     --clr-primary-400: #2d2e2f;
     --clr-hygiene-excellent: #288549;
     --clr-hygiene-average: #d79b00;
     --clr-hygiene-poor: #df5023;
   }
 
-  .dark {
+  /* .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -72,7 +74,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: hsl(212.7, 26.8%, 83.9);
-  }
+  } */
 }
 
 @layer base {
@@ -81,5 +83,13 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .nav-hover {
+    @apply hover:text-custom_accent;
+  }
+
+  .is-active {
+    @apply text-custom_accent;
   }
 }

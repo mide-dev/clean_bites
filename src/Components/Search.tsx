@@ -6,7 +6,7 @@ import { Search as Magnifier } from "lucide-react";
 function Search({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={`flex flex-1 relative drop-shadow-md ${className}`}
+      className={`flex flex-1 relative drop-shadow hover:drop-shadow-md duration-75 ${className}`}
       {...props}
     >
       <input

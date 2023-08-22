@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import Logo from "./Logo";
 import Search from "./Search";
@@ -13,12 +13,33 @@ function Header() {
       <Search className="w-full lg:max-w-[50%]" />
       <div className="flex items-center justify-between gap-x-8">
         <nav className="hidden md:block">
-          <ul className="flex justify-between gap-x-8">
-            <Link to="/">Restaurants</Link>
-            <Link to="top-picks" className="hidden lg:inline-block">
+          <ul className="flex justify-between gap-x-8 font-poppins text-sm font-medium text-custom_primary_200">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "is-active nav-hover" : "nav-hover"
+              }
+            >
+              Restaurants
+            </NavLink>
+            <NavLink
+              to="top-picks"
+              className={({ isActive }) =>
+                isActive
+                  ? "hidden lg:inline-block nav-hover is-active nav-hover"
+                  : "hidden lg:inline-block nav-hover nav-hover"
+              }
+            >
               Top Picks
-            </Link>
-            <Link to="why-us">Why us</Link>
+            </NavLink>
+            <NavLink
+              to="why-us"
+              className={({ isActive }) =>
+                isActive ? "is-active nav-hover" : "nav-hover"
+              }
+            >
+              Why us
+            </NavLink>
           </ul>
         </nav>
         <Account />

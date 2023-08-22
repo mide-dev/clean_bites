@@ -21,10 +21,16 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        openSans: ["Open Sans", "sans-serif"],
+      },
       colors: {
         custom_accent: "var(--clr-accent)",
+        custom_primary_50: "var(--clr-primary-50)",
         custom_primary_100: "var(--clr-primary-100)",
         custom_primary_200: "var(--clr-primary-200)",
+        custom_primary_300: "var(--clr-primary-300)",
         custom_primary_400: "var(--clr-primary-400)",
         hygiene_excellent: "var(--clr-hygiene-excellent)",
         hygiene_average: "var(--clr-hygiene-average)",

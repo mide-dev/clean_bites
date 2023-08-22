@@ -10,7 +10,7 @@ const Profile = forwardRef<HTMLButtonElement, ProfileProps>(
   ({ className, ...props }, ref) => {
     return (
       <button
-        className={`flex items-center gap-x-2 cursor-pointer py-2 px-2 rounded-full border-[1px] border-custom_primary_100 ${className}`}
+        className={`flex items-center gap-x-2 cursor-pointer py-2 px-2 rounded-full border-[1px] border-custom_primary_50 bg-white hover:drop-shadow focus:outline-0 duration-75 ${className}`}
         ref={ref}
         {...props}
       >
