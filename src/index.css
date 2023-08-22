@@ -92,4 +92,8 @@
   .is-active {
     @apply text-custom_accent;
   }
+
+  .search-bar {
+    @apply w-full inline-block py-3 px-6 focus:outline-none border-gray-300 font-openSans text-sm;
+  }
 }

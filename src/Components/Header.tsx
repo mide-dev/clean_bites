@@ -6,7 +6,10 @@ import Account from "./Account";
 
 function Header() {
   return (
-    <header className="my-8 md:my-6 flex flex-col items-center md:flex-row md:justify-between gap-x-8 ">
+    <header
+      className="container relative py-4 md:py-6 flex flex-col items-center md:flex-row md:justify-between 
+      gap-x-8 border-b"
+    >
       <Link to="/">
         <Logo className="w-[6.5rem] fill-custom_accent mb-6 md:mb-0" />
       </Link>
