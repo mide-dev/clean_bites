@@ -1,5 +1,12 @@
+import FilterTab from "@/Components/FilterTab";
+
 function Restaurants() {
-  return <div>This is Restaurants</div>;
+  return (
+    <div>
+      <FilterTab />
+      This is Restaurants
+    </div>
+  );
 }
 
 export default Restaurants;
