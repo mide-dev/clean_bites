@@ -1,16 +1,16 @@
 type FilterProps = {
-  showLeftFilter?: boolean;
-  showRightFilter?: boolean;
+  showLeftBlur?: boolean;
+  showRightBlur?: boolean;
 };
 
-function BlurFilter({ showLeftFilter, showRightFilter }: FilterProps) {
+function BlurFilter({ showLeftBlur, showRightBlur }: FilterProps) {
   return (
     <>
-      {showLeftFilter && (
+      {showLeftBlur && (
         <div className="absolute w-16 blur-md h-full bg-[#ffffff] left-0"></div>
       )}
 
-      {showRightFilter && (
+      {showRightBlur && (
         <div className="absolute w-16 blur-md h-full bg-[#ffffff] right-0"></div>
       )}
     </>
