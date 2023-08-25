@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { filterList } from "../constants/filterItems";
+import RenderFilters from "./RenderFilters";
 import Slider from "./Slider";
 import BlurFilter from "./BlurFilter";
 
@@ -53,23 +53,9 @@ function FilterTab() {
   };
 
   // handle clicks on filtered items
-  const handleItemClick = (item: object) => {
-    console.log(item);
-  };
-
-  // map and render filters on screen
-  const list = filterList.map((item) => (
-    <li
-      key={item.id}
-      className="inline-block"
-      onClick={() => {
-        handleItemClick(item);
-      }}
-    >
-      <span>{item.icon}</span>
-      {item.item}
-    </li>
-  ));
+  // const handleItemClick = (item: object) => {
+  //   console.log(item);
+  // };
 
   return (
     <div className="relative flex container  items-center h-[100px]">
@@ -84,9 +70,9 @@ function FilterTab() {
         className="no-scrollbar flex gap-x-6 w-full h-[70px] items-center overflow-x-scroll scroll-smooth"
         ref={itemsRef}
       >
-        {list}
+        <RenderFilters />
       </ul>
-      <BlurredFilter showRightFilter={showRightButton} />
+      <BlurFilter showRightFilter={showRightButton} />
       <Slider
         navigation="right"
         slideRight={scrollRight}
