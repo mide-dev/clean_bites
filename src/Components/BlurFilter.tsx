@@ -3,7 +3,7 @@ type FilterProps = {
   showRightFilter?: boolean;
 };
 
-function BlurredFilter({ showLeftFilter, showRightFilter }: FilterProps) {
+function BlurFilter({ showLeftFilter, showRightFilter }: FilterProps) {
   return (
     <>
       {showLeftFilter && (
@@ -17,4 +17,4 @@ function BlurredFilter({ showLeftFilter, showRightFilter }: FilterProps) {
   );
 }
 
-export default BlurredFilter;
+export default BlurFilter;

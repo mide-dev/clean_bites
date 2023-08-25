@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { filterList } from "../constants/filterItems";
 import Slider from "./Slider";
-import BlurredFilter from "./BlurredFilter";
+import BlurFilter from "./BlurFilter";
 
 function FilterTab() {
   const [showLeftButton, setShowLeftButton] = useState(false);
@@ -72,8 +72,8 @@ function FilterTab() {
   ));
 
   return (
-    <div className="relative flex container border-2 border-red-400 items-center">
-      <BlurredFilter showLeftFilter={showLeftButton} />
+    <div className="relative flex container  items-center h-[100px]">
+      <BlurFilter showLeftFilter={showLeftButton} />
       <Slider
         navigation="left"
         slideLeft={scrollLeft}
@@ -90,7 +90,7 @@ function FilterTab() {
       <Slider
         navigation="right"
         slideRight={scrollRight}
-        className="hidden sm:inline-block z-10"
+        className="hidden sm:inline-block"
         showRight={showRightButton}
       />
     </div>
