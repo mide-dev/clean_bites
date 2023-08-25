@@ -53,13 +53,13 @@ function FilterTab() {
   };
 
   // handle clicks on filtered items
-  // const handleItemClick = (item: object) => {
-  //   console.log(item);
-  // };
+  const filterClick = (item: object) => {
+    console.log(item);
+  };
 
   return (
     <div className="relative flex container  items-center h-[100px]">
-      <BlurFilter showLeftFilter={showLeftButton} />
+      <BlurFilter showLeftBlur={showLeftButton} />
       <Slider
         navigation="left"
         slideLeft={scrollLeft}
@@ -70,9 +70,9 @@ function FilterTab() {
         className="no-scrollbar flex gap-x-6 w-full h-[70px] items-center overflow-x-scroll scroll-smooth"
         ref={itemsRef}
       >
-        <RenderFilters />
+        <RenderFilters handleItemClick={filterClick} />
       </ul>
-      <BlurFilter showRightFilter={showRightButton} />
+      <BlurFilter showRightBlur={showRightButton} />
       <Slider
         navigation="right"
         slideRight={scrollRight}
