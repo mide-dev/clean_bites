@@ -10,7 +10,8 @@ function RenderFilters({ handleItemClick }: RenderFiltersProp) {
       {filterList.map((item) => (
         <li
           key={item.id}
-          className="inline-block cursor-pointer"
+          className="flex flex-col justify-center items-center whitespace-nowrap gap-y-2 
+            cursor-pointer text-[12px] text-[#717171] hover:"
           onClick={() => {
             handleItemClick(item);
           }}
