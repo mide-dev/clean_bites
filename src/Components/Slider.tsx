@@ -36,7 +36,7 @@ const Slider = ({
           strokeWidth={2}
           size={26}
           onClick={slideLeft}
-          className="absolute top-1/2 left-4 -translate-y-2/4 bg-white border-[1px] border-custom_primary_100 rounded-full hover:drop-shadow-lg hover:scale-105 hover:duration-150 "
+          className="absolute top-1/2 left-8 -translate-y-2/4 bg-white border-[1px] border-custom_primary_100 rounded-full hover:drop-shadow-lg hover:scale-105 hover:duration-150 "
         />
       ) : null}
 
@@ -46,7 +46,7 @@ const Slider = ({
           strokeWidth={2}
           size={26}
           onClick={slideRight}
-          className="absolute top-1/2 right-4 -translate-y-2/4 bg-white border-[1px] border-custom_primary_100 rounded-full hover:drop-shadow-lg hover:scale-105 hover:duration-150 "
+          className="absolute top-1/2 right-8 -translate-y-2/4 bg-white border-[1px] border-custom_primary_100 rounded-full hover:drop-shadow-lg hover:scale-105 hover:duration-150 "
         />
       ) : null}
     </div>
