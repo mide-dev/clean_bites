@@ -1,12 +1,14 @@
 import { useRef, useState, useEffect } from "react";
 import { filterList } from "../constants/filterItems";
 import Slider from "./Slider";
+import BlurredFilter from "./BlurredFilter";
 
 function FilterTab() {
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(false);
   const itemsRef = useRef<HTMLUListElement | null>(null);
 
+  // listen for scroll event to determine scroll btn display
   useEffect(() => {
     const handleScroll = () => {
       if (itemsRef.current) {
@@ -14,7 +16,7 @@ function FilterTab() {
         const currentScrollWidth =
           itemsRef.current.scrollWidth - itemsRef.current.clientWidth;
 
-        // Check if content exceeds the container's width
+        // Check if content exceeds the container's width and set true/false
         setShowLeftButton(currentScrollLeft > 0);
         setShowRightButton(currentScrollLeft < currentScrollWidth);
       }
@@ -35,6 +37,7 @@ function FilterTab() {
       }
     };
   }, []);
+
   // define left scroll func
   const scrollLeft = () => {
     if (itemsRef.current) {
@@ -70,10 +73,11 @@ function FilterTab() {
 
   return (
     <div className="relative flex container border-2 border-red-400 items-center">
+      <BlurredFilter showFilter={showLeftButton} />
       <Slider
         navigation="left"
         slideLeft={scrollLeft}
-        className="hidden sm:inline-block"
+        className="hidden sm:inline-block "
         showLeft={showLeftButton}
       />
       <ul
@@ -85,7 +89,7 @@ function FilterTab() {
       <Slider
         navigation="right"
         slideRight={scrollRight}
-        className="hidden sm:inline-block"
+        className="hidden sm:inline-block z-10"
         showRight={showRightButton}
       />
     </div>
