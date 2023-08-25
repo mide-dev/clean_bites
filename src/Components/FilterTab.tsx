@@ -67,7 +67,7 @@ function FilterTab() {
         showLeft={showLeftButton}
       />
       <ul
-        className="no-scrollbar flex gap-x-6 w-full h-[70px] items-center overflow-x-scroll scroll-smooth"
+        className="no-scrollbar flex gap-x-10 w-full h-[70px] items-center overflow-x-scroll scroll-smooth"
         ref={itemsRef}
       >
         <RenderFilters handleItemClick={filterClick} />
