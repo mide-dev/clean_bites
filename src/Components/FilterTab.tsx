@@ -73,7 +73,7 @@ function FilterTab() {
 
   return (
     <div className="relative flex container border-2 border-red-400 items-center">
-      <BlurredFilter showFilter={showLeftButton} />
+      <BlurredFilter showLeftFilter={showLeftButton} />
       <Slider
         navigation="left"
         slideLeft={scrollLeft}
@@ -86,6 +86,7 @@ function FilterTab() {
       >
         {list}
       </ul>
+      <BlurredFilter showRightFilter={showRightButton} />
       <Slider
         navigation="right"
         slideRight={scrollRight}
