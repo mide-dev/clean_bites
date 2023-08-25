@@ -1,13 +1,23 @@
 import { HTMLAttributes } from "react";
 import { ChevronLeftCircle, ChevronRightCircle } from "lucide-react";
 
-type SliderProps = HTMLAttributes<HTMLDivElement> & {
-  navigation: "left" | "right";
-  slideLeft?: () => void;
-  slideRight?: () => void;
-  showLeft?: boolean;
-  showRight?: boolean;
-};
+type conditionProps =
+  | {
+      navigation: "left";
+      slideLeft?: () => void;
+      showLeft?: boolean;
+      slideRight?: never;
+      showRight?: never;
+    }
+  | {
+      navigation: "right";
+      slideRight?: () => void;
+      showRight?: boolean;
+      slideLeft?: never;
+      showLeft?: never;
+    };
+
+type SliderProps = HTMLAttributes<HTMLDivElement> & conditionProps;
 
 const Slider = ({
   navigation,
@@ -18,17 +28,8 @@ const Slider = ({
   className,
   ...rest
 }: SliderProps) => {
-  // throw error if correct nagivation function is not provided
-  if (
-    (navigation === "left" && !slideLeft) ||
-    (navigation === "right" && !slideRight)
-  ) {
-    throw new Error(
-      `Slider: Missing slide${navigation} function for navigation: ${navigation}`
-    );
-  }
   return (
-    <div className={` cursor-pointer ${className}`} {...rest}>
+    <div className={`cursor-pointer ${className}`} {...rest}>
       {navigation == "left" && showLeft ? (
         <ChevronLeftCircle
           color="#2d2e2f"
