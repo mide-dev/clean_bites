@@ -1,8 +1,8 @@
 // import { forwardRef } from "react";
 import { forwardRef, ButtonHTMLAttributes } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import profile from "../assets/profile.svg";
-import hamburger from "../assets/hamburger.svg";
+import User from "../assets/User";
+import { Menu } from "lucide-react";
 
 type ProfileProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -14,11 +14,11 @@ const Profile = forwardRef<HTMLButtonElement, ProfileProps>(
         ref={ref}
         {...props}
       >
-        <img src={hamburger} alt="menu" className="w-5" />
+        <Menu size={20} color="#595959" />
         <Avatar className="w-6 h-6">
           <AvatarImage src="" />
           <AvatarFallback>
-            <img src={profile} alt="account" className="w-full" />
+            <User className="fill-custom_primary_200" />
           </AvatarFallback>
         </Avatar>
       </button>
