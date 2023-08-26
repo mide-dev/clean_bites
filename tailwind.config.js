@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -8,18 +7,23 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: "2rem",
-        lg: "1.5rem",
-        "2xl": "3rem",
-      },
-      screens: {
-        "2xl": "1440",
-        "3xl": "1920",
-      },
-    },
+    // container: {
+    //   center: true,
+    //   padding: {
+    //     DEFAULT: "1rem",
+    //     // sm: "2rem",
+    //     lg: "2rem",
+    //     xl: "2rem",
+    //     // "2xl": "5rem",
+    //   },
+    //   screens: {
+    //     // sm: "600px",
+    //     // md: "768px",
+    //     // lg: { min: "1270px", max: "1279px" },
+    //     // xl: "1280",
+    // "3xl": "1680",
+    //   },
+    // },
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
@@ -32,6 +36,7 @@ module.exports = {
         custom_primary_200: "var(--clr-primary-200)",
         custom_primary_300: "var(--clr-primary-300)",
         custom_primary_400: "var(--clr-primary-400)",
+        custom_primary_500: "var(--clr-primary-500)",
         hygiene_excellent: "var(--clr-hygiene-excellent)",
         hygiene_average: "var(--clr-hygiene-average)",
         hygiene_poor: "var(--clr-hygiene-poor)",
