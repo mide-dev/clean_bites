@@ -65,9 +65,9 @@ function FilterTab() {
       <BlurFilter showLeftBlur={showLeftButton} />
       <ScrollBtnDisplay
         navigation="left"
-        slideLeft={scrollLeft}
+        handleLeftClick={scrollLeft}
+        renderLeftBtn={showLeftButton}
         className="hidden sm:inline-block "
-        showLeft={showLeftButton}
       />
       <ul
         className="no-scrollbar flex gap-x-6 sm:gap-x-10 w-full h-[70px] items-center  
@@ -79,9 +79,9 @@ function FilterTab() {
       <BlurFilter showRightBlur={showRightButton} />
       <ScrollBtnDisplay
         navigation="right"
-        slideRight={scrollRight}
+        handleRightClick={scrollRight}
+        renderRightBtn={showRightButton}
         className="hidden sm:inline-block"
-        showRight={showRightButton}
       />
     </div>
   );
