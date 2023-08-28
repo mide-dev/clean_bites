@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import RenderFilters from "./RenderFilters";
-import Slider from "./Slider";
+import ScrollBtnDisplay from "./ScrollBtnDisplay";
 import BlurFilter from "./BlurFilter";
 
 function FilterTab() {
@@ -58,22 +58,26 @@ function FilterTab() {
   };
 
   return (
-    <div className="relative flex sm:container items-center h-[100px]">
+    <div
+      className="relative flex sm:container items-center pb-2 md:pb-0 md:h-[100px] 
+      border-b md:border-0 shadow-md md:shadow-none"
+    >
       <BlurFilter showLeftBlur={showLeftButton} />
-      <Slider
+      <ScrollBtnDisplay
         navigation="left"
         slideLeft={scrollLeft}
         className="hidden sm:inline-block "
         showLeft={showLeftButton}
       />
       <ul
-        className="no-scrollbar flex gap-x-6 sm:gap-x-10 w-full h-[70px] items-center  overflow-x-scroll scroll-smooth"
+        className="no-scrollbar flex gap-x-6 sm:gap-x-10 w-full h-[70px] items-center  
+          overflow-x-scroll scroll-smooth"
         ref={itemsRef}
       >
         <RenderFilters handleItemClick={filterClick} />
       </ul>
       <BlurFilter showRightBlur={showRightButton} />
-      <Slider
+      <ScrollBtnDisplay
         navigation="right"
         slideRight={scrollRight}
         className="hidden sm:inline-block"
