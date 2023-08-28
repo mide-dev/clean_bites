@@ -8,10 +8,10 @@ function Header() {
   return (
     <header
       className="container relative py-4 md:py-6 flex flex-col items-center md:flex-row md:justify-between 
-      gap-x-8 border-b"
+      gap-x-8 md:border-b"
     >
       <Link to="/">
-        <Logo className="w-[6.5rem] fill-custom_accent mb-6 md:mb-0" />
+        <Logo className="block w-[6.5rem] fill-custom_accent mb-6 md:mb-0" />
       </Link>
       <Search className="w-full lg:max-w-[50%]" />
       <div className="flex items-center justify-between gap-x-8">
