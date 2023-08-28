@@ -83,7 +83,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-foreground;
   }
 }
 
@@ -97,7 +97,7 @@
   }
 
   .search-bar {
-    @apply w-full inline-block py-3 px-6 focus:outline-none border-gray-300 font-openSans text-sm;
+    @apply w-full inline-block py-3 px-6 focus:outline-none md:border-gray-300 font-openSans text-sm;
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
