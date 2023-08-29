@@ -7,7 +7,7 @@ function Places() {
   //   const [page, setPage] = useState(1);
   //   const [error, setError] = useState(null);
 
-  // fetch places from api
+  // fetch places from api (catch err with real backend)
   useEffect(() => {
     (async function () {
       const response = await fetch("/api/places");
@@ -20,7 +20,9 @@ function Places() {
 
   return (
     <>
-      <PlacesCard placesData={placesData} />
+      {placesData?.map((place) => {
+        if (place) return <PlacesCard key={place.place_id} {...place} />;
+      })}
     </>
   );
 }
