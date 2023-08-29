@@ -1,12 +1,12 @@
 import FilterTab from "@/Components/FilterTab";
-import PlacesCard from "@/Components/PlacesCard";
+import Places from "@/Components/Places";
 
 function Restaurants() {
   return (
     <div>
       <FilterTab />
       <div className="container">
-        <PlacesCard />
+        <Places />
       </div>
     </div>
   );
