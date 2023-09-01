@@ -19,11 +19,11 @@ function Places() {
   //   console.log(placesData);
 
   return (
-    <>
+    <div className="places-grid">
       {placesData?.map((place) => {
         if (place) return <PlacesCard key={place.place_id} {...place} />;
       })}
-    </>
+    </div>
   );
 }
 
