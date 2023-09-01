@@ -1,9 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, HTMLAttributes } from "react";
 import RenderFilters from "./RenderFilters";
 import ScrollBtnDisplay from "./ScrollBtnDisplay";
 import BlurFilter from "./BlurFilter";
 
-function FilterTab() {
+function FilterTab({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(false);
   const itemsRef = useRef<HTMLUListElement | null>(null);
@@ -59,19 +59,20 @@ function FilterTab() {
 
   return (
     <div
-      className="relative flex sm:container items-center pb-2 md:pb-0 md:h-[100px] 
-      border-b md:border-0 shadow-md md:shadow-none"
+      className={`${className} relative bg-white flex sm:container items-center pb-2 md:pb-0 md:h-[100px] 
+      border-b md:border-0 shadow-md md:shadow-none `}
+      {...props}
     >
       <BlurFilter showLeftBlur={showLeftButton} />
       <ScrollBtnDisplay
         navigation="left"
         handleLeftClick={scrollLeft}
         renderLeftBtn={showLeftButton}
-        className="hidden sm:inline-block "
+        className="hidden sm:inline-block left-8 border-[1px] border-custom_primary_100"
       />
       <ul
         className="no-scrollbar flex gap-x-6 sm:gap-x-10 w-full h-[70px] items-center  
-          overflow-x-scroll scroll-smooth"
+          overflow-x-scroll scroll-smooth "
         ref={itemsRef}
       >
         <RenderFilters handleItemClick={filterClick} />
@@ -81,7 +82,7 @@ function FilterTab() {
         navigation="right"
         handleRightClick={scrollRight}
         renderRightBtn={showRightButton}
-        className="hidden sm:inline-block"
+        className="hidden sm:inline-block right-8 border-[1px] border-custom_primary_100"
       />
     </div>
   );
