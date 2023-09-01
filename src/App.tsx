@@ -29,11 +29,13 @@ createServer({
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
+    <>
       <Route index element={<Restaurants />} />
-      <Route path="top-picks" element={<TopPicks />} />
-      <Route path="why-us" element={<WhyUs />} />
-    </Route>
+      <Route path="/" element={<Layout />}>
+        <Route path="top-picks" element={<TopPicks />} />
+        <Route path="why-us" element={<WhyUs />} />
+      </Route>
+    </>
   )
 );
 
