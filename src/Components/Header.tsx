@@ -7,11 +7,12 @@ import Account from "./Account";
 function Header() {
   return (
     <header
-      className="container relative py-4 md:py-6 flex flex-col items-center md:flex-row md:justify-between 
+      className="container bg-white py-4 md:py-6 flex flex-col items-center md:flex-row md:justify-between 
       gap-x-8 md:border-b"
+      // ref={}
     >
       <Link to="/">
-        <Logo className="block w-[6.5rem] fill-custom_accent mb-6 md:mb-0" />
+        <Logo className="hidden sm:block w-[6rem] fill-custom_accent mb-6 md:mb-0" />
       </Link>
       <Search className="w-full lg:max-w-[50%]" />
       <div className="flex items-center justify-between gap-x-8">
