@@ -106,4 +106,49 @@
       padding-inline: 5rem;
     }
   }
+
+  /* .places-grid {
+    --min: 300px;
+    --gap: 1rem;
+  
+    display: grid;
+    grid-gap: var(--gap);
+
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+  } */
+
+  .places-grid {
+    --min: 300px;
+    --gap: 1rem;
+  
+    display: grid;
+    grid-gap: var(--gap);
+
+    /* Initially, allow as many columns as fit the minmax rule */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+
+    /* Media query to limit the number of columns to 6 at wider viewports */
+    @media (min-width: 2000px) {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(100% / 7)), 1fr));
+    }
+}
+
+
+
+
+  /* .places-grid {
+    --min: 25ch;
+    --gap: 1rem;
+    --max-items-per-row: 4;
+  
+    display: grid;
+    grid-gap: var(--gap);
+  
+    /* Default layout with a maximum of 4 items per row */
+    /* grid-template-columns: repeat(auto-fit, minmax(calc(100% / var(--max-items-per-row)), var(--min))); */
+  /* }  */
+  
+ 
+  
+  
 }
