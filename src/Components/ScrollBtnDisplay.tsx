@@ -28,29 +28,39 @@ const ScrollBtnDisplay = ({
   className,
   ...rest
 }: SliderProps) => {
-  return (
-    <div className={`cursor-pointer ${className}`} {...rest}>
-      {navigation == "left" && renderLeftBtn ? (
+  if (navigation == "left" && renderLeftBtn) {
+    return (
+      <div
+        className={`cursor-pointer absolute top-1/2 -translate-y-2/4 left-0  bg-white rounded-full 
+        hover:drop-shadow-lg hover:scale-105 hover:duration-150 ${className} `}
+        {...rest}
+      >
         <ChevronLeft
           color="#2d2e2f"
           strokeWidth={2}
           size={26}
           onClick={handleLeftClick}
-          className="absolute top-1/2 left-8 -translate-y-2/4 bg-white border-[1px] border-custom_primary_100 rounded-full hover:drop-shadow-lg hover:scale-105 hover:duration-150 "
         />
-      ) : null}
+      </div>
+    );
+  }
 
-      {navigation == "right" && renderRightBtn ? (
+  if (navigation == "right" && renderRightBtn) {
+    return (
+      <div
+        className={`cursor-pointer absolute top-1/2 -translate-y-2/4 right-0 bg-white rounded-full
+         hover:drop-shadow-lg hover:scale-105 hover:duration-150 ${className} `}
+        {...rest}
+      >
         <ChevronRight
           color="#2d2e2f"
           strokeWidth={2}
           size={26}
           onClick={handleRightClick}
-          className="absolute top-1/2 right-8 -translate-y-2/4 bg-white border-[1px] border-custom_primary_100 rounded-full hover:drop-shadow-lg hover:scale-105 hover:duration-150 "
         />
-      ) : null}
-    </div>
-  );
+      </div>
+    );
+  }
 };
 
 export default ScrollBtnDisplay;
