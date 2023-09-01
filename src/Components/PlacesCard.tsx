@@ -1,4 +1,5 @@
 import { HTMLAttributes } from "react";
+import PlaceImage from "./PlaceImage";
 
 import Star from "@/assets/Star";
 import { Place } from "@/constants/types";
@@ -9,9 +10,8 @@ type PlaceProp = Place & HTMLAttributes<HTMLDivElement>;
 function PlacesCard({ className, ...placesData }: PlaceProp) {
   return (
     <>
-      <div className={`w-[300px] border-[1px] rounded-lg ${className}`}>
-        {/* work on place image */}
-        {/* <PlaceImage /> */}
+      <div className={`rounded-lg ${className}`}>
+        <PlaceImage images={placesData.photos} className="rounded-t-lg" />
         <div className="px-2 pt-[0.3rem] text-[0.85rem] text-custom_primary_400">
           <div className="flex justify-between">
             <p>{placesData.city}</p>
