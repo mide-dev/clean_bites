@@ -59,7 +59,7 @@ function FilterTab({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
 
   return (
     <div
-      className={`${className} relative bg-white flex sm:container items-center pb-2 md:pb-0 md:h-[100px] 
+      className={`${className} relative flex sm:container items-center md:py-2 
       border-b md:border-0 shadow-md md:shadow-none `}
       {...props}
     >
