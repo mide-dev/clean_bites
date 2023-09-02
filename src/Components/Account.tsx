@@ -1,5 +1,5 @@
+import { HTMLAttributes } from "react";
 import Profile from "./Profile";
-
 import { LogOut } from "lucide-react";
 
 import {
@@ -11,9 +11,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-function Account() {
+function Account({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className="hidden md:flex ">
+    <div className={`hidden md:flex ${className}`} {...props}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Profile />
