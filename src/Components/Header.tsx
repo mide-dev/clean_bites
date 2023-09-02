@@ -7,15 +7,14 @@ import Account from "./Account";
 function Header() {
   return (
     <header
-      className="container bg-white py-4 md:py-6 flex flex-col items-center md:flex-row md:justify-between 
+      className="container py-4 md:py-6 flex flex-col items-center md:flex-row md:justify-between 
       gap-x-8 md:border-b"
-      // ref={}
     >
       <Link to="/">
-        <Logo className="hidden sm:block w-[6rem] fill-custom_accent mb-6 md:mb-0" />
+        <Logo className="hidden sm:block w-[5rem] md:w-[6rem] fill-custom_accent mb-6 md:mb-0" />
       </Link>
       <Search className="w-full lg:max-w-[50%]" />
-      <div className="flex items-center justify-between gap-x-8">
+      <div className="relative flex items-center justify-between gap-x-8">
         <nav className="hidden md:block">
           <ul className="flex justify-between gap-x-8 font-poppins text-sm font-medium text-custom_primary_200">
             <NavLink
@@ -24,7 +23,7 @@ function Header() {
                 isActive ? "is-active nav-hover" : "nav-hover"
               }
             >
-              Restaurants
+              Places
             </NavLink>
             <NavLink
               to="top-picks"
