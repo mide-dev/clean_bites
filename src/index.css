@@ -81,6 +81,7 @@
     scrollbar-width: none; /* Firefox */
   }
 
+  /* ADD BLUR TO SCROLL BUTTONS */
   .blurred {
     background-color: #ccc; /* Background color of the div */
     filter: blur(5px);
@@ -107,16 +108,7 @@
     }
   }
 
-  /* .places-grid {
-    --min: 300px;
-    --gap: 1rem;
-  
-    display: grid;
-    grid-gap: var(--gap);
-
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
-  } */
-
+  /* PLACES GRID */
   .places-grid {
     --min: 300px;
     --gap: 1rem;
@@ -131,24 +123,10 @@
     @media (min-width: 2000px) {
         grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(100% / 7)), 1fr));
     }
-}
+  }
 
-
-
-
-  /* .places-grid {
-    --min: 25ch;
-    --gap: 1rem;
-    --max-items-per-row: 4;
-  
-    display: grid;
-    grid-gap: var(--gap);
-  
-    /* Default layout with a maximum of 4 items per row */
-    /* grid-template-columns: repeat(auto-fit, minmax(calc(100% / var(--max-items-per-row)), var(--min))); */
-  /* }  */
-  
- 
-  
-  
+  .shadow-visible {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow properties as needed */
+  }
+   
 }
