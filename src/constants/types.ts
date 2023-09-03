@@ -1,5 +1,5 @@
 
-export type Data = {
+export type Place = {
     BusinessName: string;
     BusinessType: string;
     BusinessTypeID: number;
@@ -12,6 +12,3 @@ export type Data = {
     street: string;
     user_ratings_total: number | string;
   };
-  
-  // Define a type that includes the possibility of null
-  export type Place = Data | null;
