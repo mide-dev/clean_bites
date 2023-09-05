@@ -1,34 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useLoaderData, Await } from "react-router-dom";
 import PlacesCard from "./PlacesCard";
-import { Place } from "@/constants/types";
-import { getPlaces } from "@/constants/api";
-// import Loading from "./Loading";
+import { Place as PlaceProp } from "@/constants/types";
+import LoadingState from "./LoadingState";
+
+type LoaderData = PlaceProp[] | null;
 
 function Places() {
-  const [placesData, setPlacesData] = useState<Place[] | null>(null);
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await getPlaces();
-        setPlacesData((prevData) => (prevData ? [...prevData, ...data] : data));
-      } catch (error) {
-        console.error("Error fetching places:", error);
-        // Handle the error appropriately, e.g., setPlacesData(null) or show an error message.
-      }
-    }
+  const [placesData, setPlacesData] = useState<LoaderData>(null);
 
-    fetchData();
-  }, []);
+  const { placesPromise } = useLoaderData();
 
   return (
     <div className="places-grid">
-      {placesData !== null ? (
-        placesData.map((place) => {
-          if (place) return <PlacesCard key={place.place_id} {...place} />;
-        })
-      ) : (
-        <p>loading...</p>
-      )}
+      <Suspense fallback={<LoadingState />}>
+        <Await resolve={placesPromise}>
+          {(places) => {
+            return places.map((place: PlaceProp) => (
+              <PlacesCard key={place.place_id} data={place} />
+            ));
+          }}
+        </Await>
+      </Suspense>
     </div>
   );
 }
