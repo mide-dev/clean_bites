@@ -111,10 +111,11 @@
   /* PLACES GRID */
   .places-grid {
     --min: 300px;
-    --gap: 1rem;
+    --gap: 1.2rem;
   
     display: grid;
     grid-gap: var(--gap);
+    row-gap: 1.75rem;
 
     /* Initially, allow as many columns as fit the minmax rule */
     grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
