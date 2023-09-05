@@ -13,6 +13,8 @@ import Layout from "./Components/Layout";
 import Places from "./Pages/Places";
 import TopPicks from "./Pages/TopPicks";
 import WhyUs from "./Pages/WhyUs";
+import Loader from "./Components/Loader";
+import Error from "./Components/Error";
 
 // mock-server
 createServer({
@@ -30,7 +32,12 @@ createServer({
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route index element={<Places />} />
+      <Route
+        index
+        element={<Places />}
+        loader={Loader}
+        errorElement={<Error />}
+      />
       <Route path="/" element={<Layout />}>
         <Route path="top-picks" element={<TopPicks />} />
         <Route path="why-us" element={<WhyUs />} />
