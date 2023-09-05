@@ -7,24 +7,11 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
-    // container: {
-    //   center: true,
-    //   padding: {
-    //     DEFAULT: "1rem",
-    //     // sm: "2rem",
-    //     lg: "2rem",
-    //     xl: "2rem",
-    //     // "2xl": "5rem",
-    //   },
-    //   screens: {
-    //     // sm: "600px",
-    //     // md: "768px",
-    //     // lg: { min: "1270px", max: "1279px" },
-    //     // xl: "1280",
-    // "3xl": "1680",
-    //   },
-    // },
+    
     extend: {
+      screens: {
+        xs: "450px"
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         openSans: ["Open Sans", "sans-serif"],
