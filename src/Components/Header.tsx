@@ -1,5 +1,4 @@
 import { Link, NavLink } from "react-router-dom";
-
 import Logo from "./Logo";
 import Search from "./Search";
 import Account from "./Account";
