@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import FilterTab from "@/Components/FilterTab";
 import Header from "@/Components/Header";
 import PlacesRender from "@/Components/PlacesRender";
+import Footer from "@/Components/Footer";
 
 function Places() {
   const headerRef = useRef<HTMLUListElement | null>(null);
@@ -37,6 +38,7 @@ function Places() {
       <main className="container pt-[150px] sm:pt-[195px] lg:pt-0 mt-6 md:mt-4">
         <PlacesRender />
       </main>
+      <Footer />
     </>
   );
 }
