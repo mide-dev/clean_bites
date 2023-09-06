@@ -68,7 +68,8 @@ function FilterTab({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
         navigation="left"
         handleLeftClick={scrollLeft}
         renderLeftBtn={showLeftButton}
-        className="hidden sm:inline-block md:left-[2.5rem]  border-[1px] border-custom_primary_100"
+        className="hidden sm:inline-block xs:left-8 md:left-[2.5rem] 2xl:left-20 
+        border-[1px] border-custom_primary_100"
       />
       <ul
         className="no-scrollbar flex gap-x-6 sm:gap-x-10 w-full h-[70px] items-center  
@@ -82,7 +83,8 @@ function FilterTab({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
         navigation="right"
         handleRightClick={scrollRight}
         renderRightBtn={showRightButton}
-        className="hidden sm:inline-block md:right-[2.5rem]  border-[1px] border-custom_primary_100"
+        className="hidden sm:inline-block xs:right-8 md:right-[2.5rem] 2xl:right-20 
+        border-[1px] border-custom_primary_100"
       />
     </div>
   );
