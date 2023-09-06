@@ -29,7 +29,7 @@ function Footer({ className }: HTMLAttributes<HTMLDivElement>) {
                 <User className="fill-custom_primary_200" />
               </AvatarFallback>
             </Avatar>
-            <p>Login/SignUp</p>
+            <p>Login</p>
           </div>
         </div>
 
