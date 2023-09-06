@@ -10,7 +10,7 @@ type PlaceProp = HTMLAttributes<HTMLDivElement> & Place;
 function PlacesCard({ className, data }: PlaceProp) {
   return (
     <>
-      <div className={`rounded-lg cursor-pointer ${className}`}>
+      <div className={`rounded-lg cursor-pointer placeCard ${className}`}>
         <PlaceImage images={data.photos} className="rounded-t-lg" />
         <div className="px-2 pt-[0.3rem] text-[0.85rem] text-custom_primary_400">
           <div className="flex justify-between">
