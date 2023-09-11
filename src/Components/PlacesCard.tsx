@@ -7,7 +7,7 @@ import HygieneCheck from "./HygieneCheck";
 
 type PlaceProp = HTMLAttributes<HTMLDivElement> & Place;
 
-function PlacesCard({ className, data }: PlaceProp) {
+function PlacesCard({ className, ...data }: PlaceProp) {
   return (
     <>
       <div className={`rounded-lg cursor-pointer placeCard ${className}`}>
@@ -16,7 +16,7 @@ function PlacesCard({ className, data }: PlaceProp) {
           <div className="flex justify-between">
             <p>{data.city}</p>
             <div className="flex gap-x-[0.2rem]">
-              <Star className="w-3" />
+              <Star className="w-3 fill-[#FF385C]" />
               {/* check if the rating value returned is valid */}
               {typeof data.rating === "number" && data.rating > 0 ? (
                 <p>{`${data.rating} of ${data.user_ratings_total} Reviews`}</p>
