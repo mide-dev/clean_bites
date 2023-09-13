@@ -30,6 +30,7 @@ const ScrollBtnDisplay = ({
 }: SliderProps) => {
   if (navigation == "left" && renderLeftBtn) {
     return (
+     
       <div
         className={`cursor-pointer absolute top-1/2 -translate-y-2/4 left-0  bg-white p-[0.2rem] rounded-full 
         hover:drop-shadow-lg hover:scale-105 hover:duration-150 ${className} `}
@@ -42,6 +43,7 @@ const ScrollBtnDisplay = ({
           onClick={handleLeftClick}
         />
       </div>
+      
     );
   }
 
