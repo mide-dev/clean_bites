@@ -63,7 +63,10 @@ function FilterTab({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
       border-b md:border-0 shadow-md md:shadow-none `}
       {...props}
     >
-      <BlurFilter showLeftBlur={showLeftButton} />
+      <BlurFilter
+        showLeftBlur={showLeftButton}
+        className="xs:left-2 md:left-4 2xl:left-16"
+      />
       <ScrollBtnDisplay
         navigation="left"
         handleLeftClick={scrollLeft}
@@ -78,7 +81,10 @@ function FilterTab({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
       >
         <RenderFilters handleItemClick={filterClick} />
       </ul>
-      <BlurFilter showRightBlur={showRightButton} />
+      <BlurFilter
+        showRightBlur={showRightButton}
+        className="xs:right-2 md:right-4 2xl:right-14"
+      />
       <ScrollBtnDisplay
         navigation="right"
         handleRightClick={scrollRight}
