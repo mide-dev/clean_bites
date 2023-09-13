@@ -9,7 +9,7 @@ function Footer({ className }: HTMLAttributes<HTMLDivElement>) {
   return (
     <>
       <footer
-        className={`container fixed bottom-0 bg-white border-t w-full border-gray-300 py-4 
+        className={`fixed bottom-0 container bg-white border-t w-full border-gray-300 py-4 
           mt-4 text-sm ${className}`}
       >
         {/* mobile */}
