@@ -1,13 +1,22 @@
-import { HTMLAttributes } from "react";
+import { useState, useEffect, HTMLAttributes } from "react";
 import PlaceImage from "./PlaceImage";
-
+import HygieneIcon from "@/assets/hygieneIcon";
 import Star from "@/assets/Star";
 import { Place } from "@/constants/types";
-import HygieneCheck from "./HygieneCheck";
+import { useHygieneCheck, HygieneProp } from "../constants/HygieneCheck";
 
 type PlaceProp = HTMLAttributes<HTMLDivElement> & Place;
 
 function PlacesCard({ className, ...data }: PlaceProp) {
+  const [hygieneData, setHygieneData] = useState<HygieneProp | null>(null);
+
+  // process & retrieve hygiene data
+  const hygieneResult = useHygieneCheck(data.RatingValue);
+
+  useEffect(() => {
+    setHygieneData(hygieneResult);
+  }, []);
+
   return (
     <>
       <div className={`rounded-lg cursor-pointer placeCard ${className}`}>
@@ -29,8 +38,24 @@ function PlacesCard({ className, ...data }: PlaceProp) {
             {data.BusinessName}
           </h3>
           <p className="pt-[0.2rem] text-[0.75rem]">{data.street}</p>
-          <div className="flex pt-2 items-center gap-x-2 pb-2">
-            <HygieneCheck placeHygieneRating={data.RatingValue} />
+          <div className="">
+            {/* conditionally render hygiene */}
+            {hygieneData === "Awaiting Inspection" ? (
+              <div className={`flex pt-2 items-center gap-x-2 py-2`}>
+                <p className="block font-medium">Awaiting Inspection</p>
+              </div>
+            ) : (
+              <div className={`flex pt-2 items-center gap-x-2 py-2`}>
+                <HygieneIcon className={`${hygieneData?.color}`} />
+                {
+                  <p className="inline-block pr-[0.4rem] font-medium">
+                    {`${hygieneData?.ratingText} hygiene `}
+                    <span className="px-[0.2rem]">&#8226;</span>
+                    {`${hygieneData?.hygieneScore}%`}
+                  </p>
+                }
+              </div>
+            )}
           </div>
         </div>
       </div>
