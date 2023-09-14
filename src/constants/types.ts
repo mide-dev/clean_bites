@@ -12,3 +12,16 @@ export type Place = {
     street: string;
     user_ratings_total: number | string;
   };
+
+export type Offers = {
+    serves_vegetarian_food: boolean;
+    delivery: boolean;
+    reservable: boolean;
+    dine_in: boolean;
+    serves_beer: boolean;
+    wheelchair_accessible_entrance: boolean;
+    serves_breakfast: boolean;
+    serves_lunch: boolean;
+    serves_dinner: boolean;
+    takeout: boolean;
+};
