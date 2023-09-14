@@ -36,7 +36,7 @@ function PlaceOffers({ data }: OfferPropData) {
   return (
     <section>
       <h2>What this place offers</h2>
-    <div className="grid grid-cols-2 border-2 w-full gap-2">
+    <div className="grid xs:grid-cols-2 w-full md:w-[600px] gap-2">
       {offersArr.map((offer) => (
         <div
           key={offersArr.indexOf(offer)}
@@ -44,9 +44,9 @@ function PlaceOffers({ data }: OfferPropData) {
         >
           {/* check if offer is true */}
           {data[offer as keyof OfferProp] === true ? (
-            <CheckCircle className="w-4 stroke-green-600" />
+            <CheckCircle className="w-4 stroke-green-600 shrink-0" />
           ) : (
-            <XCircle className="w-4 stroke-red-600" />
+            <XCircle className="w-4 stroke-red-600 shrink-0" />
           )}
           <span>{formatOfferString(offer)}</span>
         </div>
