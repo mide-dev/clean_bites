@@ -36,12 +36,13 @@ function PlaceOffers({ data }: OfferPropData) {
   return (
     <section>
       <h2>What this place offers</h2>
-    <div>
+    <div className="grid grid-cols-2 border-2 w-full gap-2">
       {offersArr.map((offer) => (
         <div
           key={offersArr.indexOf(offer)}
           className="flex items-center gap-x-2"
         >
+          {/* check if offer is true */}
           {data[offer as keyof OfferProp] === true ? (
             <CheckCircle className="w-4 stroke-green-600" />
           ) : (
