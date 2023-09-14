@@ -51,20 +51,18 @@ function PlaceImage({ images, ...props }: PlaceImageProp) {
         navigation="left"
         handleLeftClick={handlePrevClick}
         renderLeftBtn={currentImageIndex > 0}
-        className="left-4 opacity-90 imageBtnScroll"
+        className="imageBtnScroll left-4 opacity-90"
       />
       <img {...props} src={photo} />
       <div className="flex items-center gap-x-2 centered-element">
         {totalImageIndicator(images)}
       </div>
-      <div className="absolute top-2 right-4">
-        <Favorite />
-      </div>
+      
       <ScrollBtnDisplay
         navigation="right"
         handleRightClick={handleNextClick}
         renderRightBtn={currentImageIndex < images.length - 1}
-        className="right-4 opacity-90 imageBtnScroll"
+        className="imageBtnScroll right-4 opacity-90 "
       />
     </div>
   );
