@@ -4,6 +4,7 @@ import HygieneIcon from "@/assets/hygieneIcon";
 import Star from "@/assets/Star";
 import { Place } from "@/constants/types";
 import { useHygieneCheck, HygieneProp } from "../constants/HygieneCheck";
+import Favorite from "./Favorite";
 
 type PlaceProp = HTMLAttributes<HTMLDivElement> & Place;
 
@@ -19,8 +20,11 @@ function PlacesCard({ className, ...data }: PlaceProp) {
 
   return (
     <>
-      <div className={`rounded-lg cursor-pointer placeCard ${className}`}>
-        <PlaceImage images={data.photos} className="rounded-t-lg" />
+      <div className={`placeCard rounded-lg cursor-pointer  ${className}`}>
+        <div className="relative">
+          <PlaceImage images={data.photos} className="rounded-t-lg" />
+          <Favorite className="absolute top-2 right-4"/>
+        </div>
         <div className="px-2 pt-[0.3rem] text-[0.85rem] text-custom_primary_400">
           <div className="flex justify-between">
             <p>{data.city}</p>
@@ -34,7 +38,7 @@ function PlacesCard({ className, ...data }: PlaceProp) {
               )}
             </div>
           </div>
-          <h3 className="text-[1rem] font-medium text-custom_primary_500 pt-2">
+          <h3 className="pt-2 font-medium">
             {data.BusinessName}
           </h3>
           <p className="pt-[0.2rem] text-[0.75rem]">{data.street}</p>
