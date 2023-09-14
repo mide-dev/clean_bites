@@ -55,6 +55,17 @@
   body {
     @apply bg-white font-poppins;
   }
+  h1 {
+    @apply text-[22px] md:text-[24px] font-medium
+  }
+
+  h2 {
+    @apply text-[20px] md:text-[22px]
+  }
+
+  h3 {
+    @apply text-[1rem] text-custom_primary_500
+  }
 }
 
 @layer utilities {
