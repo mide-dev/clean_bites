@@ -6,11 +6,8 @@ import {
 } from "react-router-dom";
 
 import "./App.css";
-// import { createServer } from "miragejs";
-// import places from "../mockData/places.json";
-// import placesDetail from "../mockData/placesDetail.json"
-// import searchPrediction from "../mockData/searchPrediction.json";
-import server from '../server.js'
+
+import server from "../server.js";
 import Layout from "./Components/Layout";
 import Places from "./Pages/Places";
 import TopPicks from "./Pages/TopPicks";
@@ -19,7 +16,7 @@ import PlacesLoader from "./Components/PlacesLoader";
 import Error from "./Components/Error";
 import PlaceDetail from "./Pages/PlaceDetail";
 
-server()
+server();
 
 const router = createBrowserRouter(
   createRoutesFromElements(
