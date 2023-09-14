@@ -1,9 +1,9 @@
 import { HTMLAttributes } from "react";
 import { Link } from "react-router-dom";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { UtensilsCrossed } from "lucide-react";
-import User from "@/assets/User";
-import Heart from "@/assets/Heart";
+import User from "../assets/User";
+import Heart from "../assets/Heart";
 
 function Footer({ className }: HTMLAttributes<HTMLDivElement>) {
   return (
