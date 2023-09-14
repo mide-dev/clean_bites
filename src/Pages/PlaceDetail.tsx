@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import Header from "@/Components/Header";
 import PlaceImage from "@/Components/PlaceImage";
 import PlaceInfo from "@/Components/placeInfo";
-import OfferVerify from "@/Components/OfferVerify";
+import PlaceOffers from "@/Components/PlaceOffers";
+
 
 function PlaceDetail() {
   const [placeDetail, setPlaceDetail] = useState(null);
@@ -34,6 +35,7 @@ function PlaceDetail() {
         <PlaceInfo />
 
         {/* PLACE OFFERS */}
+        {placeDetail && <PlaceOffers data ={placeDetail.offers[0]} />}
       </main>
     </>
   );
