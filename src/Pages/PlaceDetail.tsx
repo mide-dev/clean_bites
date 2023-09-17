@@ -32,11 +32,11 @@ function PlaceDetail() {
   if (placeDetail) {
     return (
       <>
-        <Header className="hidden md:flex" />
+        <Header className="hidden md:flex is-place-detail" />
         <div className="placeCard">
           {<PlaceImage images={placeDetail.photos} />}
         </div>
-        <main className="container text-sm">
+        <main className="text-sm">
           {/* PLACE INFO */}
           <section>
             {/*  title */}

@@ -110,6 +110,10 @@
       max-width: 100%;
       padding-inline: 2.5rem;
     }
+
+    .container:where(.is-place-detail) {
+      max-width: 1200px;
+    }
   }
 
   @media (min-width: 1440px) {
@@ -117,7 +121,13 @@
       max-width: 100%;
       padding-inline: 5rem;
     }
+
+    .container:where(.is-place-detail) {
+      max-width: 1200px;
+    }
   }
+
+
 
   /* PLACES GRID */
   .places-grid {
