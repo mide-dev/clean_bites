@@ -3,12 +3,14 @@ import { HTMLAttributes } from "react";
 import Logo from "./Logo";
 import Search from "./Search";
 import Account from "./Account";
+import Divider from "./Divider";
 
 function Header({ className, ...props }: HTMLAttributes<HTMLHeadElement>) {
   return (
+    <>
     <header
       className={`container py-4 md:py-6 flex flex-col items-center md:flex-row md:justify-between 
-      gap-x-8 md:border-b ${className}`}
+      gap-x-8 ${className}`}
       {...props}
     >
       <Link to="/">
@@ -49,6 +51,8 @@ function Header({ className, ...props }: HTMLAttributes<HTMLHeadElement>) {
         <Account />
       </div>
     </header>
+    <Divider axis='horizontal'/>
+    </>
   );
 }
 
