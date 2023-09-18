@@ -112,7 +112,7 @@
     }
 
     .container:where(.is-place-detail) {
-      max-width: 1200px;
+      max-width: 1144px;
     }
   }
 
@@ -123,7 +123,7 @@
     }
 
     .container:where(.is-place-detail) {
-      max-width: 1200px;
+      max-width: 1144px;
     }
   }
 
