@@ -30,6 +30,7 @@ function PlaceDetail() {
   }, []);
   console.log(placeDetail)
 
+
   if (placeDetail) {
     return (
       <>

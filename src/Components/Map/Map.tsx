@@ -19,7 +19,7 @@ function Map() {
         <GoogleMap
         mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
+          zoom={18}
         />
       )}
     </div>
