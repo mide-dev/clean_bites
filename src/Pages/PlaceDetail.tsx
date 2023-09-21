@@ -8,6 +8,9 @@ import { UtensilsCrossed, PhoneCall } from "lucide-react";
 import { useHygieneCheck, HygieneProp } from "../constants/HygieneCheck";
 import HygieneIcon from "@/assets/hygieneIcon";
 import Star from "@/assets/Star";
+import ReviewCard from "@/Components/ReviewCard";
+import { Button } from "@/Components/ui/button";
+import write from '../assets/write.png'
 
 import placesDetail from "../../mockData/PlacesDetail.json";
 
@@ -39,17 +42,16 @@ function PlaceDetail() {
     return (
       <>
         <Header className="hidden md:flex is-place-detail" />
+        
         <main className="md:container is-place-detail text-sm">
-          <div className="placeCard">
-            {
+          <div className="w-full  justify-center placeCard">
               <PlaceImage
                 images={placeDetail.photos}
-                className="max-h-[580px] w-full object-cover"
+                className=" block object-cover"
               />
-            }
           </div>
           {/* PLACE INFO */}
-          <section>
+          <section className="place_detail_section">
             {/*  title */}
             <div className="flex items-center">
               <h1>
@@ -92,9 +94,31 @@ function PlaceDetail() {
           </section>
 
           {/* PLACE OFFERS */}
-          {<PlaceOffers data={placeDetail.offers[0]} />}
-          {/* <div className="h-20 w-4 "></div> */}
-          <Map />
+          <section className="place_detail_section">
+            <h2>What this place offers</h2>
+            <PlaceOffers data={placeDetail.offers[0]} />
+          </section>
+          {/* Place Map */}
+          <section className="place_detail_section">
+            <div className="mb-2">
+              <h2>Where you're going</h2>
+            </div>
+            <Map latitude={51.5072} longitude={0.1276} className="mx-auto w-full h-[220px] md:h-[450px]"/>
+          </section>
+          {/* place review */}
+          <section className="place_detail_section">
+            <h2>Recommended Reviews</h2>
+            <div className="flex gap-x-1">
+            <Star className="w-4 fill-custom_accent inline-block" />
+            <h3 className="">4.93 from 207 reviews</h3>
+            </div>
+            <Button variant="outline" className="flex items-center gap-x-[0.125rem] cursor-pointer hover:shadow">
+              <img src={write} className="pb-1"/>
+              <span>Write a review</span>
+            </Button>
+            <ReviewCard />
+            <div className="h-20"></div>
+          </section>
         </main>
       </>
     );
