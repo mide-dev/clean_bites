@@ -22,8 +22,7 @@ function Paragraph({text}) {
                 <p>
                     {showMore ? text : `${Str}...`}  
                 </p>
-                <button  
-                    // className={truncatedStr ? 'inline-block': 'hidden'}
+                <button 
                     onClick={handleClick}>{showMore ? 'Show Less': 'Show More'}
                 </button>
             </>
