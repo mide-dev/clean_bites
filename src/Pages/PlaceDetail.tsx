@@ -4,15 +4,21 @@ import Header from "@/Components/Header";
 import Map from "@/Components/Map/Map";
 import PlaceImage from "@/Components/PlaceImage";
 import PlaceOffers from "@/Components/PlaceOffers";
-import { UtensilsCrossed, PhoneCall } from "lucide-react";
+import PlaceRecommendation from '../Components/PlaceRecommendation';
+import Footer from "../Components/Footer";
+import { UtensilsCrossed, PhoneCall, ChevronRight } from "lucide-react";
 import { useHygieneCheck, HygieneProp } from "../constants/HygieneCheck";
 import HygieneIcon from "@/assets/hygieneIcon";
 import Star from "@/assets/Star";
 import ReviewCard from "@/Components/ReviewCard";
 import { Button } from "@/Components/ui/button";
+import places from '../../mockData/places.json'
 import write from "../assets/write.png";
 
+
+
 import placesDetail from "../../mockData/PlacesDetail.json";
+import Divider from "@/Components/Divider";
 
 function PlaceDetail() {
   const [placeDetail, setPlaceDetail] = useState(null);
@@ -37,24 +43,23 @@ function PlaceDetail() {
   //     });
   // }, []);
   // if (placeDetail) console.log(placeDetail[0].offers);
-  console.log(placeDetail);
 
   if (placeDetail) {
     return (
       <>
         <Header className="hidden md:flex is-place-detail" />
-
-        <main className="md:container is-place-detail text-sm">
-          <div className="w-full  justify-center placeCard">
-            <PlaceImage
-              images={placeDetail.photos}
-              className=" block object-cover"
-            />
-          </div>
+        <main className="md:container is-place-detail text-sm mb-12">
           {/* PLACE INFO */}
-          <section className="place_detail_section">
+          <section className="flex flex-col">
+            {/* Image */}
+            <div className="placeCard w-full md:order-3">
+              <PlaceImage
+                images={placeDetail.photos}
+                className=" block object-cover"
+              />
+            </div>
             {/*  title */}
-            <div className="flex items-center">
+            <div className="flex items-center place_detail_section md:order-1">
               <h1>
                 {placeDetail.BusinessName}
                 <span className="px-2">&#8226;</span>
@@ -62,7 +67,7 @@ function PlaceDetail() {
               <div className="text-base">$$$</div>
             </div>
             {/* google review group */}
-            <div className="flex gap-x-[0.1rem]">
+            <div className="flex gap-x-[0.1rem] place_detail_section md:order-2">
               <Star className="w-4 fill-black inline-block" />
               <p className="inline-block">
                 4.92 <span className="px-[0.2rem]">&#8226;</span>
@@ -70,8 +75,9 @@ function PlaceDetail() {
                 <span className="px-[0.2rem]">&#8226;</span> 60 Spring Gardens
               </p>
             </div>
+            {/* <Divider axis='horizontal' className="border-slate-300" /> */}
             {/* hygiene */}
-            <div>
+            <div className="place_detail_section md:order-4">
               <HygieneIcon className="" />
               <p>Health & Hygiene Rating - Very Poor</p>
               <div className="progress-bar w-full h-5 bg-[#ccc] rounded-full">
@@ -81,14 +87,14 @@ function PlaceDetail() {
               </div>
             </div>
             {/* open time */}
-            <div className="flex gap-x-2 items-center">
+            <div className="flex gap-x-2 items-center place_detail_section md:order-5">
               <UtensilsCrossed className="w-5 stroke-custom_primary_500" />
               <p>Open 11:00 AM - 11:00 PM</p>
               <span>&#8226;</span>
               <button className="underline">See hours</button>
             </div>
             {/* contact call */}
-            <div className="flex gap-x-2 items-center ">
+            <div className="flex gap-x-2 items-center place_detail_section md:order-6">
               <PhoneCall className="w-5 stroke-custom_primary_500" />
               <p>0191 260 5880</p>
             </div>
@@ -107,7 +113,7 @@ function PlaceDetail() {
             <Map
               latitude={51.5072}
               longitude={0.1276}
-              className="mx-auto w-full h-[220px] md:h-[450px]"
+              className="mx-auto w-full h-[220px] sm:h-[300px] md:h-[450px]"
             />
           </section>
           {/* place review */}
@@ -124,14 +130,26 @@ function PlaceDetail() {
               <img src={write} className="pb-1" />
               <span>Write a review</span>
             </Button>
-            <div className="flex">
+            <div className="flex gap-x-4 overflow-scroll no-scrollbar scroll-smooth">
               {placeDetail.reviews.map((review) => (
-                <ReviewCard />
+                <ReviewCard data={review} key={review.time}/>
               ))}
             </div>
-            <div className="h-20"></div>
+            <Button
+                variant="outline"
+                className="flex items-center gap-x-[0.125rem] cursor-pointer hover:shadow"
+              >
+              <span>More reviews on Google</span>
+              <ChevronRight className="stroke-slate-700" />
+            </Button>
+            {/* Explore */}
+            <h2>Explore similar places</h2>
+            <div className="flex gap-x-4 overflow-scroll no-scrollbar scroll-smooth">
+              {places.map(data => <PlaceRecommendation place_id ={data.place_id} key={data.place_id}/>)}
+            </div>
           </section>
         </main>
+        <Footer className="is-place-detail"/>
       </>
     );
   }
