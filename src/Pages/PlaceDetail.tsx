@@ -48,14 +48,14 @@ function PlaceDetail() {
     return (
       <>
         <Header className="hidden md:flex is-place-detail" />
-        <main className="md:container is-place-detail text-sm mb-12">
+        <main className="md:container is-place-detail text-sm mb-10">
           {/* PLACE INFO */}
           <section className="flex flex-col">
             {/* Image */}
             <div className="placeCard w-full md:order-3">
               <PlaceImage
                 images={placeDetail.photos}
-                className=" block object-cover"
+                className=" block object-cover md:h-[368px] w-full"
               />
             </div>
             {/*  title */}
