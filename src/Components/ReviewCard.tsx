@@ -4,7 +4,6 @@ import profileImage from "../assets/profileImage.png";
 import Rating from "react-rating";
 import Star from "@/assets/Star";
 
-
 // type ReviewCardProp = {object[]};
 
 function ReviewCard({ data }) {
@@ -27,9 +26,7 @@ function ReviewCard({ data }) {
         fractions={10}
         readonly
       />
-      <p className="min-w-[250px] xs:min-w-[300px]">
-        {data.text}
-      </p>
+      <p className="min-w-[250px] xs:min-w-[300px]">{data.text}</p>
     </Card>
   );
 }
