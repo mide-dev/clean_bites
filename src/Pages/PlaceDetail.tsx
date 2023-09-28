@@ -4,7 +4,7 @@ import Header from "@/Components/Header";
 import Map from "@/Components/Map/Map";
 import PlaceImage from "@/Components/PlaceImage";
 import PlaceOffers from "@/Components/PlaceOffers";
-import PlaceRecommendation from '../Components/PlaceRecommendation';
+import PlaceRecommendation from "../Components/PlaceRecommendation";
 import Footer from "../Components/Footer";
 import { UtensilsCrossed, PhoneCall, ChevronRight } from "lucide-react";
 import { useHygieneCheck, HygieneProp } from "../constants/HygieneCheck";
@@ -12,10 +12,8 @@ import HygieneIcon from "@/assets/hygieneIcon";
 import Star from "@/assets/Star";
 import ReviewCard from "@/Components/ReviewCard";
 import { Button } from "@/Components/ui/button";
-import places from '../../mockData/places.json'
+import places from "../../mockData/places.json";
 import write from "../assets/write.png";
-
-
 
 import placesDetail from "../../mockData/PlacesDetail.json";
 import Divider from "@/Components/Divider";
@@ -52,10 +50,10 @@ function PlaceDetail() {
           {/* PLACE INFO */}
           <section className="flex flex-col">
             {/* Image */}
-            <div className="placeCard w-full md:order-3">
+            <div className="placeCard md:order-3">
               <PlaceImage
                 images={placeDetail.photos}
-                className=" block object-cover md:h-[368px] w-full"
+                className=" block md:h-[368px] w-full"
               />
             </div>
             {/*  title */}
@@ -132,24 +130,31 @@ function PlaceDetail() {
             </Button>
             <div className="flex gap-x-4 overflow-scroll no-scrollbar scroll-smooth">
               {placeDetail.reviews.map((review) => (
-                <ReviewCard data={review} key={review.time}/>
+                <ReviewCard data={review} key={review.time} />
               ))}
             </div>
             <Button
-                variant="outline"
-                className="flex items-center gap-x-[0.125rem] cursor-pointer hover:shadow"
-              >
+              variant="outline"
+              className="flex items-center gap-x-[0.125rem] cursor-pointer hover:shadow"
+            >
               <span>More reviews on Google</span>
               <ChevronRight className="stroke-slate-700" />
             </Button>
             {/* Explore */}
-            <h2>Explore similar places</h2>
-            <div className="flex gap-x-4 overflow-scroll no-scrollbar scroll-smooth">
-              {places.map(data => <PlaceRecommendation place_id ={data.place_id} key={data.place_id}/>)}
+            <div className="bg-[#FFFBFC] md:bg-white rounded-xl ">
+              <h2>Explore similar places</h2>
+              <div className="rounded-xl overflow-scroll no-scrollbar scroll-smooth">
+                {places.map((data) => (
+                  <PlaceRecommendation
+                    place_id={data.place_id}
+                    key={data.place_id}
+                  />
+                ))}
+              </div>
             </div>
           </section>
         </main>
-        <Footer className="is-place-detail"/>
+        <Footer className="is-place-detail" />
       </>
     );
   }
