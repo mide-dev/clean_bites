@@ -175,4 +175,20 @@
   .place_detail_section {
     @apply w-full px-4 md:px-0
   }
+
+  /* slider
+  */
+  .slider {
+    display: flex;
+    aspect-ratio: 16 / 9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+  }
 }
