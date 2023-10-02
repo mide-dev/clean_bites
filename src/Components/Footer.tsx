@@ -1,15 +1,17 @@
 import { HTMLAttributes } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import Divider from "./Divider";
 import { UtensilsCrossed } from "lucide-react";
 import User from "../assets/User";
 import Heart from "../assets/Heart";
 
 function Footer({ className }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <>
+    <div className="sticky bottom-0 bg-white">
+      <Divider axis="horizontal" />
       <footer
-        className={`fixed bottom-0 container bg-white border-t w-full border-gray-300 py-4 
+        className={`container bg-white w-full border-gray-300 pb-4 
           mt-4 text-sm ${className}`}
       >
         {/* mobile */}
@@ -61,7 +63,8 @@ function Footer({ className }: HTMLAttributes<HTMLDivElement>) {
           </div>
         </div>
       </footer>
-    </>
+
+    </div>
   );
 }
 

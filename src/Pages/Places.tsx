@@ -36,7 +36,7 @@ function Places() {
         <FilterTab />
       </section>
       <main className="container pt-[150px] sm:pt-[195px] lg:pt-0 mt-6 md:mt-4">
-        <PlacesRender />
+        {/* <PlacesRender /> */}
       </main>
       <Footer />
     </>

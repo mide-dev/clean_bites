@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@300;400;500;700&display=swap");
+/* @import "~react-image-gallery/styles/css/image-gallery.css"; */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -158,16 +159,36 @@
     transform: translate(-50%, -50%);
   }
    
-  .imageBtnScroll {
+  .btnScroll {
     display: none;
   }
   
-  .placeCard:hover .imageBtnScroll {
+  .btnScrollContainer:hover .btnScroll {
     display: block;
   }
 
   .map-container {
     width: 100%;
     height: 100%;
+  }
+
+  .place_detail_section {
+    @apply w-full px-4 md:px-0
+  }
+
+  /* slider
+  */
+  .slider {
+    display: flex;
+    aspect-ratio: 16 / 9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
   }
 }

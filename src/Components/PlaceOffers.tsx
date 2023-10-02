@@ -35,7 +35,6 @@ function PlaceOffers({ data }: OfferPropData) {
 
   return (
     <section>
-      <h2>What this place offers</h2>
     <div className="grid xs:grid-cols-2 w-full md:w-[600px] gap-2">
       {offersArr.map((offer) => (
         <div
