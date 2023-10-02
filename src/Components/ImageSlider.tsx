@@ -6,12 +6,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // navigate next item
 function NextArrow(props) {
-  const { onClick, leftArrowStyle } = props;
+  const { onClick, rightArrowStyle } = props;
   return (
     <button
-      className={`p-1 bg-white flex items-center justify-center btnScroll
+      className={`p-1 bg-white flex items-center justify-center
         rounded-full absolute z-10 right-3 top-1/2 -translate-y-2/4 opacity-75
-        transition-opacity ease-in-out duration-200 hover:opacity-100 ${leftArrowStyle}`}
+        transition-opacity ease-in-out duration-200 hover:opacity-100 ${rightArrowStyle}`}
       onClick={onClick}
     >
       <ChevronRight size={24} color="black" />
@@ -21,12 +21,12 @@ function NextArrow(props) {
 
 // navigate previous item
 function PrevArrow(props) {
-  const { rightArrowStyle, onClick } = props;
+  const { leftArrowStyle, onClick } = props;
   return (
     <button
-      className={`p-1 bg-white flex items-center justify-center btnScroll
+      className={`p-1 bg-white flex items-center justify-center
         rounded-full absolute z-10 left-3 top-1/2 -translate-y-2/4 opacity-75 
-        transition-opacity ease-in-out duration-200 hover:opacity-100 ${rightArrowStyle}`}
+        transition-opacity ease-in-out duration-200 hover:opacity-100 ${leftArrowStyle}`}
       onClick={onClick}
     >
       <ChevronLeft size={24} color="black" />
@@ -36,8 +36,8 @@ function PrevArrow(props) {
 
 type ImageScrollProps = HTMLAttributes<HTMLDivElement> & {
   images: { image: string }[];
-  leftScrollCss?: string;
-  rightScrollCss?: string;
+  leftArrowStyle?: string;
+  rightArrowStyle?: string;
   scrollSpeed: number;
   displayScrollBtn: boolean;
 };
@@ -47,6 +47,8 @@ function ImageSlider({
   scrollSpeed,
   displayScrollBtn,
   className,
+  leftArrowStyle,
+  rightArrowStyle
 }: ImageScrollProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -58,10 +60,10 @@ function ImageSlider({
     slidesToShow: 1,
     arrows: { displayScrollBtn },
     slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow rightArrowStyle={rightArrowStyle}/>,
+    prevArrow: <PrevArrow leftArrowStyle={leftArrowStyle}/>,
     customPaging: (i) => {
-      // Calculate the opacity for each dot based on whether it's the active slide
+      //  set opacity for each dot based on whether it's the active slide
       const opacity = currentSlide === i ? 1 : 0.5;
 
       return (
