@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/Components/Header";
 import Map from "@/Components/Map/Map";
-import PlaceImage from "@/Components/PlaceImage";
 import PlaceOffers from "@/Components/PlaceOffers";
 import PlaceRecommendation from "../Components/PlaceRecommendation";
 import Footer from "../Components/Footer";
+import ImageSlider from "../Components/ImageSlider";
 import { UtensilsCrossed, PhoneCall, ChevronRight } from "lucide-react";
 import { useHygieneCheck, HygieneProp } from "../constants/HygieneCheck";
 import HygieneIcon from "@/assets/hygieneIcon";
@@ -51,9 +51,13 @@ function PlaceDetail() {
           <section className="flex flex-col">
             {/* Image */}
             <div className="placeCard md:order-3">
-              <PlaceImage
+              <ImageSlider
                 images={placeDetail.photos}
-                className=" block md:h-[368px] w-full"
+                scrollSpeed={1000}
+                className="block md:h-[368px] w-full md:rounded-xl"
+                leftScrollCss="xs:left-8 md:left-[2.5rem] p-3"
+                rightScrollCss="xs:right-8 md:right-[2.5rem] p-3"
+                displayScrollBtn={true}
               />
             </div>
             {/*  title */}
