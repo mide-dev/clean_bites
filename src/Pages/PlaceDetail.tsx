@@ -55,8 +55,6 @@ function PlaceDetail() {
                 images={placeDetail.photos}
                 scrollSpeed={1000}
                 className="block md:h-[368px] w-full md:rounded-xl"
-                leftScrollCss="xs:left-8 md:left-[2.5rem] p-3"
-                rightScrollCss="xs:right-8 md:right-[2.5rem] p-3"
                 displayScrollBtn={true}
               />
             </div>
