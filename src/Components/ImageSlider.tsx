@@ -88,7 +88,7 @@ function ImageSlider({
   // render image
   const renderImages = (imgArr) => {
     return imgArr.map((img) => (
-      <div key={img.image}>
+      <div key={img.image} className="focus:outline-none">
         <img src={img.image} className={`${className} object-cover`} />
       </div>
     ));
