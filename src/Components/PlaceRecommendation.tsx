@@ -2,6 +2,7 @@ import { Card } from "./ui/card";
 import PlaceImage from "./PlaceImage";
 import Favorite from "./Favorite";
 import { useHygieneCheck } from "../constants/HygieneCheck";
+import ImageSlider from "./ImageSlider";
 import HygieneIcon from "@/assets/hygieneIcon";
 import places from "../../mockData/places.json";
 import Star from "@/assets/Star";
@@ -16,12 +17,12 @@ function PlaceRecommendation(place_id) {
     <Card className="border-none shrink-0 ">
       <div className="flex bg-[#FFFBFC] md:bg-white py-4 gap-x-2">
         <div className="flex relative w-[150px] xs:w-[200px] h-full">
-          {
-            <PlaceImage
-              images={currentPlace[0].photos}
-              className="rounded-lg "
-            />
-          }
+          <ImageSlider
+            images={currentPlace[0].photos}
+            displayScrollBtn={false}
+            scrollSpeed={300}
+            className="rounded-lg"
+          />
           <Favorite className="absolute top-2 right-3" />
         </div>
         <div>
