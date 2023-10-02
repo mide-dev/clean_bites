@@ -8,7 +8,7 @@ import {
 
 import "./App.css";
 
-// import server from "../server.js";
+import server from "../server.js";
 import Layout from "./Components/Layout";
 import Places from "./Pages/Places";
 import TopPicks from "./Pages/TopPicks";
@@ -17,7 +17,7 @@ import PlacesLoader from "./Components/PlacesLoader";
 import Error from "./Components/Error";
 import PlaceDetail from "./Pages/PlaceDetail";
 
-// server();
+server();
 
 const router = createBrowserRouter(
   createRoutesFromElements(
