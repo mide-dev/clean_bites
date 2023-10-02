@@ -20,18 +20,19 @@ function PlacesCard({ className, ...data }: PlaceProp) {
 
   return (
     <>
+    {/* btnScrollContainer  & btnScroll are custom css*/}
       <div
         className={`placeCard rounded-lg cursor-pointer btnScrollContainer ${className}`}
       >
         <div className="relative">
-          <div className="relative">
-            <ImageSlider
-              images={data.photos}
-              scrollSpeed={500}
-              displayScrollBtn={true}
-              className="rounded-t-lg"
-            />
-          </div>
+          <ImageSlider
+            images={data.photos}
+            scrollSpeed={500}
+            displayScrollBtn={true}
+            className="rounded-t-lg"
+            leftArrowStyle="btnScroll"
+            rightArrowStyle="btnScroll"
+          />
           <Favorite className="absolute top-2 right-4" />
         </div>
         <div className="px-2 pt-[0.3rem] text-[0.85rem] text-custom_primary_400">
@@ -49,7 +50,7 @@ function PlacesCard({ className, ...data }: PlaceProp) {
           </div>
           <h3 className="pt-2 font-medium">{data.BusinessName}</h3>
           <p className="pt-[0.2rem] text-[0.75rem]">{data.street}</p>
-          <div className="">
+          <div>
             {/* conditionally render hygiene */}
             {hygieneData === "Awaiting Inspection" ? (
               <div className={`flex pt-2 items-center gap-x-2 py-2`}>
