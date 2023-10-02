@@ -159,11 +159,11 @@
     transform: translate(-50%, -50%);
   }
    
-  .imageBtnScroll {
+  .btnScroll {
     display: none;
   }
   
-  .placeCard:hover .imageBtnScroll {
+  .btnScrollContainer:hover .btnScroll {
     display: block;
   }
 
