@@ -24,28 +24,13 @@ function PlaceDetail() {
   useEffect(() => {
     setPlaceDetail(placesDetail[0]);
   }, []);
-  // const [hygieneData, setHygieneData] = useState<HygieneProp | null>(null);
-
-  // // process & retrieve hygiene data
-  // const hygieneResult = useHygieneCheck(data.RatingValue);
-
-  // useEffect(() => {
-  //   setHygieneData(hygieneResult);
-  // }, []);
-
-  // useEffect(() => {
-  //   fetch("api/placeDetail/1")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setPlaceDetail(data.placeDetails);
-  //     });
-  // }, []);
-  // if (placeDetail) console.log(placeDetail[0].offers);
-
+ 
+  
   if (placeDetail) {
     return (
       <>
         <Header className="hidden md:flex is-place-detail" />
+        <Divider axis='horizontal' className="hidden md:block"/>
         <main className="md:container is-place-detail text-sm mb-10">
           {/* PLACE INFO */}
           <section className="flex flex-col">
@@ -54,7 +39,7 @@ function PlaceDetail() {
               <ImageSlider
                 images={placeDetail.photos}
                 scrollSpeed={1000}
-                className="block md:h-[368px] w-full md:rounded-xl"
+                className="block max-h-[400px] lg:max-h-[500px] w-full md:rounded-xl"
                 displayScrollBtn={true}
               />
             </div>
@@ -66,16 +51,6 @@ function PlaceDetail() {
               </h1>
               <div className="text-base">$$$</div>
             </div>
-            {/* google review group */}
-            <div className="flex gap-x-[0.1rem] place_detail_section md:order-2">
-              <Star className="w-4 fill-black inline-block" />
-              <p className="inline-block">
-                4.92 <span className="px-[0.2rem]">&#8226;</span>
-                <button className="underline">723 Google Reviews </button>
-                <span className="px-[0.2rem]">&#8226;</span> 60 Spring Gardens
-              </p>
-            </div>
-            {/* <Divider axis='horizontal' className="border-slate-300" /> */}
             {/* hygiene */}
             <div className="place_detail_section md:order-4">
               <HygieneIcon className="" />
@@ -85,6 +60,19 @@ function PlaceDetail() {
                   <p className="text-white font-medium">60% </p>
                 </div>
               </div>
+            </div>
+            {/* mobile-divider */}
+            <Divider axis='horizontal' className="bg-slate-300 md:hidden"/>
+            {/* google review group */}
+            <div className=" gap-x-[0.1rem] place_detail_section md:order-2">
+              <div className="flex">
+                <Star className="w-4 fill-black inline-block" />
+                <p className="inline-block">
+                  4.92 <span className="px-[0.2rem] inline-block">&#8226;</span>
+                  <button className="underline inline-block">723 Google Reviews</button>
+                </p>
+              </div>
+              <p>60 Spring Gardens,<span className="px-[0.2rem]"></span> London</p>
             </div>
             {/* open time */}
             <div className="flex gap-x-2 items-center place_detail_section md:order-5">
@@ -97,6 +85,8 @@ function PlaceDetail() {
             <div className="flex gap-x-2 items-center place_detail_section md:order-6">
               <PhoneCall className="w-5 stroke-custom_primary_500" />
               <p>0191 260 5880</p>
+              {/* mobile-divider */}
+              <Divider axis='horizontal' className="bg-slate-300 md:hidden"/>
             </div>
           </section>
 
@@ -104,6 +94,7 @@ function PlaceDetail() {
           <section className="place_detail_section">
             <h2>What this place offers</h2>
             <PlaceOffers data={placeDetail.offers[0]} />
+            <Divider axis='horizontal' className="bg-slate-300"/>
           </section>
           {/* Place Map */}
           <section className="place_detail_section">
@@ -130,7 +121,7 @@ function PlaceDetail() {
               <img src={write} className="pb-1" />
               <span>Write a review</span>
             </Button>
-            <div className="flex gap-x-4 overflow-scroll no-scrollbar scroll-smooth">
+            <div>
               {placeDetail.reviews.map((review) => (
                 <ReviewCard data={review} key={review.time} />
               ))}
@@ -144,14 +135,13 @@ function PlaceDetail() {
             </Button>
             {/* Explore */}
             <div className="bg-[#FFFBFC] md:bg-white rounded-xl ">
-              <h2>Explore similar places</h2>
+              <h2>Explore places similar to <span className="font-medium">{placeDetail.BusinessName}</span></h2>
               <div className="rounded-xl overflow-scroll no-scrollbar scroll-smooth">
-                {places.map((data) => (
-                  <PlaceRecommendation
-                    place_id={data.place_id}
-                    key={data.place_id}
-                  />
-                ))}
+                <PlaceRecommendation
+                  place_id={placeDetail.place_id}
+                  key={placeDetail.place_id}
+                  className="flex gap-x-4 overflow-scroll no-scrollbar scroll-smooth"
+                />
               </div>
             </div>
           </section>
