@@ -51,6 +51,7 @@ function ImageSlider({
   rightArrowStyle
 }: ImageScrollProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  // console.log(images)
 
   // react slick settings
   const settings = {
@@ -96,7 +97,7 @@ function ImageSlider({
     ));
   };
 
-  return <Slider {...settings}>{renderImages(images || [])}</Slider>;
+  return <Slider {...settings}>{renderImages(images)}</Slider>;
 }
 
 export default ImageSlider;
