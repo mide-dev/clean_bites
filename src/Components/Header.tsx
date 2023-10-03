@@ -51,7 +51,6 @@ function Header({ className, ...props }: HTMLAttributes<HTMLHeadElement>) {
         <Account />
       </div>
     </header>
-    <Divider axis='horizontal'/>
     </>
   );
 }
