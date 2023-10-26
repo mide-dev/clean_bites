@@ -34,7 +34,7 @@ function Places() {
         ref={headerRef}
       >
         <Header />
-        <Divider axis='horizontal'/>
+        <Divider axis="horizontal" />
         <FilterTab />
       </section>
       <main className="container pt-[150px] sm:pt-[195px] lg:pt-0 mt-6 md:mt-4">
