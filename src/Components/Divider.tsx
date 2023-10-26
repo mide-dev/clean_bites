@@ -1,15 +1,20 @@
 import { HTMLAttributes } from "react";
 
 type DividerProps = HTMLAttributes<HTMLHeadElement> & {
-    axis: 'horizontal' | 'vertical'
-}
+  axis: "horizontal" | "vertical";
+};
 
-function Divider({axis, className}: DividerProps) {
-    return (<>
-    {axis === 'horizontal' && <div className={`${className} w-full border-b`}></div>}
-    {axis === 'vertical' && <div className={`${className} h-full border-r`}></div>}
-    
-    </>)
+function Divider({ axis, className }: DividerProps) {
+  return (
+    <>
+      {axis === "horizontal" && (
+        <div className={`${className} w-full border-b my-2`}></div>
+      )}
+      {axis === "vertical" && (
+        <div className={`${className} h-full border-r`}></div>
+      )}
+    </>
+  );
 }
 
 export default Divider;
