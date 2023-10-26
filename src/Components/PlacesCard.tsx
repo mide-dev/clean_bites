@@ -6,9 +6,10 @@ import { useHygieneCheck, HygieneProp } from "../constants/HygieneCheck";
 import Favorite from "./Favorite";
 import ImageSlider from "./ImageSlider";
 
-type PlaceProp = HTMLAttributes<HTMLDivElement> & Place & {
-  backround?: boolean
-};
+type PlaceProp = HTMLAttributes<HTMLDivElement> &
+  Place & {
+    backround?: boolean;
+  };
 
 function PlacesCard({ backround, className, ...data }: PlaceProp) {
   const [hygieneData, setHygieneData] = useState<HygieneProp | null>(null);
@@ -22,9 +23,11 @@ function PlacesCard({ backround, className, ...data }: PlaceProp) {
 
   return (
     <>
-    {/* btnScrollContainer  & btnScroll are custom css*/}
+      {/* btnScrollContainer  & btnScroll are custom css*/}
       <div
-        className={`${backround === true && 'bg-red-50 p-2  rounded-lg shadow'} placeCard cursor-pointer btnScrollContainer ${className}`}
+        className={`${
+          backround === true && "bg-red-50 p-2  rounded-lg shadow"
+        } placeCard cursor-pointer btnScrollContainer ${className}`}
       >
         <div className="relative">
           <ImageSlider
@@ -60,7 +63,7 @@ function PlacesCard({ backround, className, ...data }: PlaceProp) {
               </div>
             ) : (
               <div className={`flex pt-2 items-center gap-x-2 py-2`}>
-                <HygieneIcon className={`${hygieneData?.color}`} />
+                <HygieneIcon className={`${hygieneData?.fill}`} />
                 {
                   <p className="inline-block pr-[0.4rem] font-medium">
                     {`${hygieneData?.ratingText} hygiene `}

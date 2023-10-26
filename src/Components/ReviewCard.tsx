@@ -8,7 +8,7 @@ import Star from "@/assets/Star";
 
 function ReviewCard({ data }) {
   return (
-    <Card className="p-3 border-none">
+    <>
       <div className="flex gap-x-2 items-center">
         <Avatar className="w-12 h-12">
           <AvatarImage src={data.profile_photo_url} />
@@ -27,7 +27,7 @@ function ReviewCard({ data }) {
         readonly
       />
       <p className="min-w-[250px] xs:min-w-[300px]">{data.text}</p>
-    </Card>
+    </>
   );
 }
 
