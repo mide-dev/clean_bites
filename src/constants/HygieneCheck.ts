@@ -1,7 +1,8 @@
 
 export type HygieneProp = "Awaiting Inspection" | {
     ratingText: string;
-    color: string;
+    fill: string;
+    bg: string;
     hygieneScore: number;
 }
 
@@ -10,28 +11,33 @@ function formatHygieneScore(hygieneRating: number | string) {
   if (hygieneRating === 1) {
     return {
       text: "Very Poor",
-      color: "fill-hygiene_poor",
+      fill: "fill-hygiene_poor",
+      bg: "bg-hygiene_poor",
       hygienePercent: 20,
     };
   } else if (hygieneRating === 2) {
-    return { text: "Poor", color: "fill-hygiene_poor", hygienePercent: 40 };
+    return { text: "Poor", fill: "fill-hygiene_poor",
+    bg: "bg-hygiene_poor", hygienePercent: 40 };
   } else if (hygieneRating === 3) {
     return {
       text: "Average",
-      color: "fill-hygiene_average",
+      fill: "fill-hygiene_average",
+      bg: "bg-hygiene_average",
       hygienePercent: 60,
     };
   } else if (hygieneRating === 4) {
     return {
       text: "Good",
-      color: "fill-hygiene_excellent",
+      fill: "fill-hygiene_excellent",
+      bg: "bg-hygiene_excellent",
       hygienePercent: 80,
     };
   } else if (hygieneRating === 5) {
     return {
       text: "Excellent",
-      color: "fill-hygiene_excellent",
       hygienePercent: 100,
+      fill: "fill-hygiene_excellent",
+      bg: "bg-hygiene_excellent",
     };
   } else {
     return "Awaiting Inspection";
@@ -48,7 +54,8 @@ export function useHygieneCheck(placeHygieneRating: string | number): HygienePro
 
   return {
     ratingText: result.text,
-    color: result.color,
+    fill: result.fill,
+    bg: result.bg,
     hygieneScore: result.hygienePercent,
   };
 
