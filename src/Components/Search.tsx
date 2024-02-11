@@ -19,6 +19,8 @@ function Search({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
           className="search-bar md:rounded-r-full focus:outline-none border-r-[0.5px] border-y-[0.5px] "
           type="text"
           placeholder="Location"
+          value="London"
+          readOnly
         />
         <span className="absolute w-[1px] h-[70%] bg-gray-300 top-[50%] left-[0px] -translate-y-[50%]"></span>
       </div>
