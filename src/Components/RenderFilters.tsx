@@ -1,10 +1,10 @@
 // import { filterList } from "@/constants/filterItems";
+import { useFilterContext } from "../FilterContext";
 
-type RenderFiltersProp = {
-  // handleItemClick: (item: object) => void;
-};
 
 function RenderFilters({ list }) {
+  const { onItemClicked } = useFilterContext();
+
   return (
     <>
       {list.map((item) => (
@@ -14,9 +14,7 @@ function RenderFilters({ list }) {
             cursor-pointer text-[12px] text-[#717171] font-poppins hover:text-black 
             stroke-custom_primary_400 first:pl-4 sm:first:pl-0 last:pr-4 
             sm:last:pr-0"
-          // onClick={() => {
-          //   handleItemClick(item);
-          // }}
+          onClick={() => onItemClicked(item.item)}
         >
           <item.icon strokeWidth={1.5} size={24} className="" />
           {item.item}
