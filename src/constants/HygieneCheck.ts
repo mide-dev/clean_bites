@@ -6,9 +6,15 @@ export type HygieneProp = "Awaiting Inspection" | {
     hygieneScore: number;
 }
 
-// change method when real data comes
-function formatHygieneScore(hygieneRating: number | string) {
-  if (hygieneRating === 1) {
+function formatHygieneScore(hygieneRating: number) {
+  if (hygieneRating === 0) {
+    return {
+      text: "Very Poor",
+      fill: "fill-red-500",
+      bg: "bg-hygiene_poor",
+      hygienePercent: 0,
+    };
+  } else if (hygieneRating === 1) {
     return {
       text: "Very Poor",
       fill: "fill-hygiene_poor",
@@ -20,7 +26,7 @@ function formatHygieneScore(hygieneRating: number | string) {
     bg: "bg-hygiene_poor", hygienePercent: 40 };
   } else if (hygieneRating === 3) {
     return {
-      text: "Average",
+      text: "Satisfactory",
       fill: "fill-hygiene_average",
       bg: "bg-hygiene_average",
       hygienePercent: 60,
@@ -44,11 +50,11 @@ function formatHygieneScore(hygieneRating: number | string) {
   }
 }
 
-export function useHygieneCheck(placeHygieneRating: string | number): HygieneProp {
+export function useHygieneCheck(placeHygieneRating: number): HygieneProp {
 
   const result = formatHygieneScore(placeHygieneRating);
 
-  if (result === 'Awaiting Inspection') {
+  if (result === "Awaiting Inspection") {
     return 'Awaiting Inspection'
   }
 
