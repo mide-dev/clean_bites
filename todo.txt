@@ -1,0 +1,13 @@
+places display ✔
+handle no place image ✔
+load more place ✔
+place filter onclick
+place detail {map, recommendations, info, reviews :{read & write}} ~
+place navigate to place detail onclick
+search {page, autocomplete, navigate to place detail}
+auth
+user favorites
+user reviews
+Top picks
+why us
+cache places...
