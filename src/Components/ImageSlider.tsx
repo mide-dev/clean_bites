@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import noImage from "../assets/no_image.png";
 
 // navigate next item
 function NextArrow(props) {
@@ -48,10 +49,9 @@ function ImageSlider({
   displayScrollBtn,
   className,
   leftArrowStyle,
-  rightArrowStyle
+  rightArrowStyle,
 }: ImageScrollProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  // console.log(images)
 
   // react slick settings
   const settings = {
@@ -61,8 +61,8 @@ function ImageSlider({
     slidesToShow: 1,
     arrows: { displayScrollBtn },
     slidesToScroll: 1,
-    nextArrow: <NextArrow rightArrowStyle={rightArrowStyle}/>,
-    prevArrow: <PrevArrow leftArrowStyle={leftArrowStyle}/>,
+    nextArrow: <NextArrow rightArrowStyle={rightArrowStyle} />,
+    prevArrow: <PrevArrow leftArrowStyle={leftArrowStyle} />,
     customPaging: (i) => {
       //  set opacity for each dot based on whether it's the active slide
       const opacity = currentSlide === i ? 1 : 0.5;
@@ -90,11 +90,19 @@ function ImageSlider({
 
   // render image
   const renderImages = (imgArr) => {
-    return imgArr.map((img) => (
-      <div key={img.image} className="focus:outline-none">
-        <img src={img.image} className={`${className} object-cover`} />
-      </div>
-    ));
+    if (imgArr && imgArr.length > 0) {
+      return imgArr.map((img) => (
+        <div key={img} className="focus:outline-none">
+          <img src={img} className={`${className} object-cover`} />
+        </div>
+      ));
+    } else {
+      return (
+        <div key={noImage} className="focus:outline-none">
+          <img src={noImage} className={`${className} object-cover`} />
+        </div>
+      );
+    }
   };
 
   return <Slider {...settings}>{renderImages(images)}</Slider>;
