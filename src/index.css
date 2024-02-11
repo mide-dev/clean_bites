@@ -124,7 +124,7 @@
     }
 
     .container:where(.is-place-detail) {
-      max-width: 1144px;
+      max-width: 1280px;
     }
   }
 
@@ -176,6 +176,10 @@
     @apply w-full px-4 md:px-0 pt-2 pb-1
   }
 
+  .place-detail-spacer {
+    @apply mb-2 md:py-3
+  }
+
   /* slider
   */
   .slider {
@@ -190,5 +194,17 @@
     flex: 1 0 100%;
     scroll-snap-align: start;
     object-fit: cover;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  /* sidebar layout */
+  .place-detail-body {
+    --size: 4rem;
+
+    display: grid;
+    gap: var(--size);
+    grid-template-columns: 1fr fit-content(20ch);
   }
 }
