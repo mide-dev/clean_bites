@@ -10,7 +10,7 @@ const PlaceOfferSection = ({data}) => {
         <h2 className="place-detail-spacer">What this place offers</h2>
         <PlaceOffers data={data.google_enriched_data.place_offers} />
         <Divider axis="horizontal" className="bg-slate-300" />
-      </section>
+      </section>  
       {/* Place Map */}
       <section className="place_detail_section">
         <div className="mb-2">
