@@ -1,4 +1,5 @@
 import { useRouteError } from "react-router-dom";
+import Header from "@/Components/Header";
 
 type Error = {
   message: string;
@@ -27,6 +28,7 @@ export default Error;
 export function CustomError({ message, statusText, status }: Error) {
   return (
     <>
+      <Header />
       <div className="grid place-content-center w-full my-20">
         <h1 className="text-custom_primary_500 font-medium">
           An error occured: {message}
