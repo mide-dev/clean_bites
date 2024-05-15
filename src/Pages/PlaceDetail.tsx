@@ -10,6 +10,7 @@ import Divider from "@/Components/Divider";
 import PlaceOfferSection from "../Components/PlaceOfferSection";
 import PlaceReviewSection from "../Components/PlaceReviewSection";
 import { getPlaceDetail } from "../constants/api";
+import PlaceDetailLoader from "@/Components/placeDetailLoader";
 
 function PlaceDetail() {
   const params = useParams();
@@ -67,7 +68,7 @@ function PlaceDetail() {
 
   // display initial loading screen
   if (loading) {
-    return <div>I'm Loading details...</div>;
+    return <PlaceDetailLoader />;
   }
 
   // if error, display error to user
