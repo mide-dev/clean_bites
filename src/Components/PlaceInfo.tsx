@@ -24,7 +24,7 @@ const PlaceInfo = ({ data }) => {
   return (
     <section className="flex flex-col md:my-4">
       {/* Image */}
-      <div className="placeCard md:order-3">
+      <div className="md:order-3">
         <ImageSlider
           images={data.google_enriched_data.photo_urls}
           scrollSpeed={1000}
@@ -53,8 +53,8 @@ const PlaceInfo = ({ data }) => {
             <p className="block font-medium">Awaiting Inspection</p>
           </div>
         ) : (
-          <> 
-          {/* TODO: USE A PROGRESS ELEMENT */}
+          <>
+            {/* TODO: USE A PROGRESS ELEMENT */}
             <div className="flex gap-x-1 pb-3">
               <HygieneIcon className={`${hygieneResult.fill}`} />
               <p>
@@ -104,7 +104,7 @@ const PlaceInfo = ({ data }) => {
         </p>
         <span>&#8226;</span>
         {/* TODO: CREATE THE HOURS DIALOG */}
-        <button className="underline">See hours</button> 
+        <button className="underline">See hours</button>
       </div>
       {/* contact call */}
       <div className="place_detail_section md:order-6">
