@@ -74,3 +74,14 @@ export async function getPlaceSearch(query: string, page: number = 0) {
   const data = await response.json();
   return data.results;
 }
+
+// autocomplete
+export async function getPlaceAutocomplete(query) {
+  const response = await fetch(`${baseURL}places/autocomplete/?query=${query}`);
+
+  if (!response.ok) {
+    return [];
+  }
+  const data = await response.json();
+  return data;
+}
