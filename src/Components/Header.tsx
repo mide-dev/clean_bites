@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { HTMLAttributes } from "react";
 import Logo from "./Logo";
-import Search from "./Search";
+import SearchBar from "./SearchBar";
 import Account from "./Account";
 import Divider from "./Divider";
 
@@ -16,7 +16,7 @@ function Header({ className, ...props }: HTMLAttributes<HTMLHeadElement>) {
       <Link to="/">
         <Logo className="hidden sm:block w-[5rem] md:w-[6rem] fill-custom_accent mb-6 md:mb-0" />
       </Link>
-      <Search className="w-full lg:max-w-[50%]" />
+      <SearchBar className="w-full lg:max-w-[50%]" />
       <div className="relative flex items-center justify-between gap-x-8">
         <nav className="hidden md:block">
           <ul className="flex justify-between gap-x-8 font-poppins text-sm font-medium text-custom_primary_200">
