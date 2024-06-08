@@ -1,13 +1,22 @@
 places display ✔
 handle no place image ✔
 load more place ✔
-place filter onclick
-place detail {map, recommendations, info, reviews :{read & write}} ~
-place navigate to place detail onclick
-search {page, autocomplete, navigate to place detail}
+place navigate to place detail onclick ✔
+cache places... ✔
+place detail loader (work on this first tomorrow) ✔
+
+
+search {page, autocomplete, navigate to place detail} (This will be next) 
 auth
+place detail {map, recommendations, info, reviews :{read & write}} ~ 
+    (make review showup, work on similar places logic -  consider switching this to other similar places near ...), see opening time
 user favorites
 user reviews
 Top picks
 why us
-cache places...
+
+problems. 
+place filter onclick loader
+when select a new place category, scroll screen to top before loading.
+Theres a glitch when loading.. it shows loader on new line
+
