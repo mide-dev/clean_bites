@@ -57,15 +57,15 @@
     @apply bg-white font-poppins;
   }
   h1 {
-    @apply text-[22px] md:text-[24px] font-medium
+    @apply text-[22px] md:text-[24px] font-medium;
   }
 
   h2 {
-    @apply text-[20px] md:text-[22px]
+    @apply text-[20px] md:text-[22px];
   }
 
   h3 {
-    @apply text-[1rem] text-custom_primary_500
+    @apply text-[1rem] text-custom_primary_500;
   }
 }
 
@@ -112,7 +112,7 @@
       padding-inline: 2.5rem;
     }
 
-    .container:where(.is-place-detail) {
+    .container:where(.shrinked-container) {
       max-width: 1144px;
     }
   }
@@ -123,18 +123,16 @@
       padding-inline: 5rem;
     }
 
-    .container:where(.is-place-detail) {
+    .container:where(.shrinked-container) {
       max-width: 1280px;
     }
   }
-
-
 
   /* PLACES GRID */
   .places-grid {
     --min: 300px;
     --gap: 1.2rem;
-  
+
     display: grid;
     grid-gap: var(--gap);
     row-gap: 1.75rem;
@@ -144,7 +142,10 @@
 
     /* Media query to limit the number of columns to 6 at wider viewports */
     @media (min-width: 2000px) {
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(100% / 7)), 1fr));
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, calc(100% / 7)), 1fr)
+      );
     }
   }
 
@@ -158,11 +159,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-   
+
   .btnScroll {
     display: none;
   }
-  
+
   .btnScrollContainer:hover .btnScroll {
     display: block;
   }
@@ -173,11 +174,11 @@
   }
 
   .place_detail_section {
-    @apply w-full px-4 md:px-0 pt-2 pb-1
+    @apply w-full px-4 md:px-0 pt-2 pb-1;
   }
 
   .place-detail-spacer {
-    @apply mb-2 md:py-3
+    @apply mb-2 md:py-3;
   }
 
   /* slider
@@ -197,7 +198,6 @@
   }
 }
 
-
 @media (min-width: 1024px) {
   /* sidebar layout */
   .place-detail-body {
@@ -208,3 +208,17 @@
     grid-template-columns: 1fr fit-content(20ch);
   }
 }
+
+/* SEARCH CSS */
+.resizable-div {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+  transition: width 0.3s, height 0.3s;
+}
+
+.resized {
+  width: 200px;
+  height: 200px;
+}
+
