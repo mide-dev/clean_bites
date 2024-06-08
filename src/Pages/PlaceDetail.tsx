@@ -49,9 +49,9 @@ function PlaceDetail() {
   if (placeDetail) {
     return (
       <>
-        <Header className="hidden md:flex is-place-detail" />
+        <Header className="hidden md:flex shrinked-container" />
         <Divider axis="horizontal" className="hidden md:block" />
-        <main className="md:container is-place-detail text-sm mb-10">
+        <main className="md:container shrinked-container text-sm mb-10">
           <PlaceInfo data={placeDetail} />
           <section className="place-detail-body relative">
             <div>
@@ -61,7 +61,7 @@ function PlaceDetail() {
             <PlaceDetailRecommendation data={placeDetail} />
           </section>
         </main>
-        <Footer className="is-place-detail" />
+        <Footer className="shrinked-container" />
       </>
     );
   }
