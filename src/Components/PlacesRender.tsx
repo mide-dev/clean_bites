@@ -8,9 +8,6 @@ import { CustomError } from "./Error";
 import { Link } from "react-router-dom";
 import { filterList } from "@/constants/filterItems";
 
-// function getItems(selectedItem: string) {
-//   return JSON.parse(sessionStorage.getItem(selectedItem)) || [];
-//
 
 function Places() {
   const { selectedItem } = useFilterContext();
