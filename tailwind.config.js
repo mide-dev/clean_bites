@@ -7,11 +7,10 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
-    
     extend: {
       screens: {
         xs: "450px",
-        '2xl': "1440px"
+        "2xl": "1440px",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
@@ -84,5 +83,30 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      addUtilities({
+        ".scrollbar-thin": {
+          "scrollbarWidth": "thin",
+        },
+        
+        ".scrollbar-thumb-rounded": {
+          "&::-webkit-scrollbar-thumb": {
+            borderRadius: "10px",
+          },
+        },
+        ".scrollbar-thumb": {
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "#b0bec5",
+          },
+        },
+        ".scrollbar-track": {
+          "&::-webkit-scrollbar-track": {
+            backgroundColor: "#eceff1",
+          },
+        },
+      });
+    },
+  ],
 };
