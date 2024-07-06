@@ -1,7 +1,9 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useContext, useEffect } from "react";
 import Profile from "./Profile";
-import { LogOut } from "lucide-react";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import AuthContext from "@/AuthProvider";
+import { getCookie, deleteCookie } from "../Pages/auth/utils";
+import { getCurrentUser, getNewAccessToken } from "@/constants/api";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,34 +13,96 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
+type AuthContextType = {
+  isAuth: {
+    accessToken?: string;
+    refreshToken?: string;
+  };
+  setIsAuth: (auth: { accessToken: string; refreshToken: string }) => void;
+  userData?: any;
+};
+
 function Account({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
+  const { isAuth, setIsAuth, userData } =
+    useContext<AuthContextType>(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const accessToken = getCookie("accessToken");
+        const refreshToken = getCookie("refreshToken");
+
+        if (accessToken && !isAuth.accessToken) {
+          const currentUser = await getCurrentUser(accessToken);
+          if (currentUser.id) {
+            setIsAuth({ accessToken, refreshToken });
+          } else {
+            const getNewTokens = await getNewAccessToken(refreshToken);
+            if (getNewTokens.access) {
+              const newAccessToken = getNewTokens.access;
+              const newRefreshToken = getNewTokens.refresh;
+              setIsAuth({
+                accessToken: newAccessToken,
+                refreshToken: newRefreshToken,
+              });
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error during authentication:", error);
+      }
+    })();
+  }, [isAuth, setIsAuth]);
+
+  const handleLogout = () => {
+    deleteCookie("accessToken");
+    deleteCookie("refreshToken");
+    setIsAuth({ accessToken: "", refreshToken: "" });
+    navigate("/");
+  };
+
   return (
-    <div className={`hidden md:flex ${className}`} {...props}>
+    <div className={`hidden sm:flex ${className}`} {...props}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Profile />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="font-poppins w-56 mr-4 mt-2 hidden md:block">
+        <DropdownMenuContent className="font-poppins w-56 mr-4 mt-2 hidden sm:block">
           <DropdownMenuGroup>
-            <DropdownMenuItem className="py-2 cursor-pointer">
-              <span>Log in</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="py-2 cursor-pointer">
-              <span>Sign up</span>
-            </DropdownMenuItem>
+            {!isAuth.accessToken ? (
+              <>
+                <DropdownMenuItem className="py-2 cursor-pointer">
+                  <NavLink to="login" className="w-full">
+                    Log in
+                  </NavLink>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="py-2 cursor-pointer">
+                  <NavLink to="signup" className="w-full">
+                    Sign up
+                  </NavLink>
+                </DropdownMenuItem>
+              </>
+            ) : (
+              <>
+                <DropdownMenuItem className="py-2 cursor-pointer">
+                  <NavLink to="placesreviewed" className="w-full">
+                    Places Reviewed
+                  </NavLink>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="py-2 cursor-pointer">
+                  <span>Profile (work in progress)</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className="my-2" />
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="py-2 cursor-pointer"
+                >
+                  <span>Log Out</span>
+                </DropdownMenuItem>
+              </>
+            )}
           </DropdownMenuGroup>
-          <DropdownMenuSeparator className="my-2" />
-          <DropdownMenuItem className="py-2 cursor-pointer">
-            <span>GitHub</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem className="py-2 cursor-pointer custom_primary_50">
-            <span>Contact Me</span>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem className="cursor-pointer">
-            <LogOut className="mr-2 h-4 w-4" />
-            <span>Bypass Login</span>
-          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
