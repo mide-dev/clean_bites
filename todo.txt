@@ -4,10 +4,10 @@ load more place ✔
 place navigate to place detail onclick ✔
 cache places... ✔
 place detail loader (work on this first tomorrow) ✔
+search {page, autocomplete, navigate to place detail} (This will be next)✔ 
 
-
-search {page, autocomplete, navigate to place detail} (This will be next) 
 auth
+
 place detail {map, recommendations, info, reviews :{read & write}} ~ 
     (make review showup, work on similar places logic -  consider switching this to other similar places near ...), see opening time
 user favorites
@@ -19,4 +19,6 @@ problems.
 place filter onclick loader
 when select a new place category, scroll screen to top before loading.
 Theres a glitch when loading.. it shows loader on new line
+when click away, autocomplete should disapear
 
+protected route => when user is logged in, they can't relogin.

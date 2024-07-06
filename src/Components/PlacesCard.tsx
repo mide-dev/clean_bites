@@ -3,7 +3,6 @@ import HygieneIcon from "@/assets/hygieneIcon";
 import Star from "@/assets/Star";
 import { Place } from "@/constants/types";
 import { useHygieneCheck, HygieneProp } from "../constants/HygieneCheck";
-import Favorite from "./Favorite";
 import ImageSlider from "./ImageSlider";
 
 type PlaceProp = HTMLAttributes<HTMLDivElement> &
@@ -31,14 +30,17 @@ const PlacesCard = forwardRef<HTMLDivElement, PlaceProp>((props, ref) => {
     >
       <div className="relative">
         <ImageSlider
-          images={data.photo_url}
+          images={
+            data?.photo_url
+              ? data.photo_url
+              : data.google_enriched_data?.photo_urls
+          }
           scrollSpeed={500}
           displayScrollBtn={true}
           className="rounded-t-lg w-full h-[220px] 2xl:h-[240px]"
           leftArrowStyle="btnScroll"
           rightArrowStyle="btnScroll"
         />
-        <Favorite className="absolute top-2 right-4" />
       </div>
       <div className="px-2 pt-[0.3rem] text-[0.85rem] text-custom_primary_400">
         <div className="flex justify-between">

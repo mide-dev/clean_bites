@@ -1,5 +1,4 @@
-import { useRef, useState, useEffect, HTMLAttributes } from "react";
-import RenderFilters from "./RenderFilters";
+import { HTMLAttributes } from "react";
 import ListScroll from "./ListScroll";
 import { filterList } from "@/constants/filterItems";
 

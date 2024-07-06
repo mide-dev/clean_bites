@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import Header from "@/Components/Header";
+import { useParams } from "react-router-dom";
 import PlaceDetailRecommendation from "@/Components/PlaceDetailRecommendation";
-import Footer from "../Components/Footer";
 import PlaceInfo from "../Components/PlaceInfo";
-import placesDetail from "../../mockData/PlacesDetail.json";
 import { CustomError } from "../Components/Error";
 import Divider from "@/Components/Divider";
 import PlaceOfferSection from "../Components/PlaceOfferSection";
@@ -29,7 +26,7 @@ function PlaceDetail() {
       setLoading(true);
       const place = await getPlaceDetail(params.place_id);
       setPlaceDetail(place);
-    } catch (error) {
+    } catch (error: any) {
       setError({
         message: "Failed to fetch Places",
         statusText: error.statusText,
@@ -49,7 +46,6 @@ function PlaceDetail() {
   if (placeDetail) {
     return (
       <>
-        <Header className="hidden md:flex shrinked-container" />
         <Divider axis="horizontal" className="hidden md:block" />
         <main className="md:container shrinked-container text-sm mb-10">
           <PlaceInfo data={placeDetail} />
@@ -58,10 +54,9 @@ function PlaceDetail() {
               <PlaceOfferSection data={placeDetail} />
               <PlaceReviewSection placeData={placeDetail} />
             </div>
-            <PlaceDetailRecommendation data={placeDetail} />
+            <PlaceDetailRecommendation />
           </section>
         </main>
-        <Footer className="shrinked-container" />
       </>
     );
   }

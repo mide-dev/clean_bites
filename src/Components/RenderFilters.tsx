@@ -1,10 +1,20 @@
-// import { filterList } from "@/constants/filterItems";
 import { useState } from "react";
 import { useFilterContext } from "../FilterContext";
+import { IconType } from "react-icons";
 
-function RenderFilters({ list }) {
+interface FilterItem {
+  id: string;
+  item: string;
+  icon: IconType;
+}
+
+interface RenderFiltersProps {
+  list: FilterItem[];
+}
+
+function RenderFilters({ list }: RenderFiltersProps) {
   const { onItemClicked } = useFilterContext();
-  const [currentItemId, setCurrentItemId] = useState(list[0]?.id);
+  const [currentItemId, setCurrentItemId] = useState(list[0]?.id || "");
 
   return (
     <>
@@ -21,10 +31,10 @@ function RenderFilters({ list }) {
             }`}
           onClick={() => {
             setCurrentItemId(item.id);
-            return onItemClicked(item.item);
+            onItemClicked(item.item);
           }}
         >
-          <item.icon strokeWidth={1.5} size={24} className="" />
+          <item.icon strokeWidth={1.5} size={24} />
           {item.item}
         </li>
       ))}

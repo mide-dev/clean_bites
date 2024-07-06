@@ -6,13 +6,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import noImage from "../assets/no_image.png";
 
 // navigate next item
-function NextArrow(props) {
-  const { onClick, rightArrowStyle } = props;
+interface ArrowProps {
+  onClick?: () => void;
+  arrowStyle?: string;
+}
+
+function NextArrow({ onClick, arrowStyle }: ArrowProps) {
   return (
     <button
       className={`p-1 bg-white flex items-center justify-center
         rounded-full absolute z-10 right-3 top-1/2 -translate-y-2/4 opacity-75
-        transition-opacity ease-in-out duration-200 hover:opacity-100 ${rightArrowStyle}`}
+        transition-opacity ease-in-out duration-200 hover:opacity-100 ${arrowStyle}`}
       onClick={onClick}
     >
       <ChevronRight size={24} color="black" />
@@ -20,14 +24,12 @@ function NextArrow(props) {
   );
 }
 
-// navigate previous item
-function PrevArrow(props) {
-  const { leftArrowStyle, onClick } = props;
+function PrevArrow({ onClick, arrowStyle }: ArrowProps) {
   return (
     <button
       className={`p-1 bg-white flex items-center justify-center
         rounded-full absolute z-10 left-3 top-1/2 -translate-y-2/4 opacity-75 
-        transition-opacity ease-in-out duration-200 hover:opacity-100 ${leftArrowStyle}`}
+        transition-opacity ease-in-out duration-200 hover:opacity-100 ${arrowStyle}`}
       onClick={onClick}
     >
       <ChevronLeft size={24} color="black" />

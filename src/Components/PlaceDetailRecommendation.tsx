@@ -1,18 +1,13 @@
 import PlaceRecommendation from "../Components/PlaceRecommendation";
+import Divider from "./Divider";
 
-const PlaceDetailRecommendation = ({data}) => {
+const PlaceDetailRecommendation = () => {
   return (
     <div className="place_detail_section bg-[#FFFBFC] md:bg-white rounded-xl text-base">
-      <h3>
-        Places similar to{" "}
-        <span className="font-medium">{data.business_name}</span>
-      </h3>
+      <h3>More places with excellent hygiene</h3>
+      <Divider axis="horizontal" />
       <div className="rounded-xl overflow-scroll no-scrollbar scroll-smooth">
-        <PlaceRecommendation
-          place_id={data.place_id}
-          key={data.place_id}
-          className="flex gap-x-4 overflow-scroll no-scrollbar scroll-smooth"
-        />
+        <PlaceRecommendation />
       </div>
     </div>
   );

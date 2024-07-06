@@ -11,7 +11,7 @@ function createArray(rowCount: number) {
 }
 
 function LoadingState() {
-  const columnCount = 15;
+  const columnCount = 16;
   const myArray = createArray(columnCount);
 
   return (

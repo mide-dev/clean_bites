@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import React from "react";
 import { ChevronRight } from "lucide-react";
 import Star from "@/assets/Star";
 import ReviewCard from "@/Components/ReviewCard";
@@ -9,8 +10,13 @@ import Divider from "@/Components/Divider";
 import { getPlaceReview } from "../constants/api";
 import { CustomError } from "../Components/Error";
 import ReviewPopup from "./ReviewPopup";
+import { Place } from "@/constants/types";
 
-const PlaceReviewSection = ({ placeData }) => {
+interface PlaceReviewSectionProps {
+  placeData: Place;
+}
+
+const PlaceReviewSection = ({ placeData }: PlaceReviewSectionProps) => {
   const [placeReview, setPlaceReview] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({
@@ -26,14 +32,13 @@ const PlaceReviewSection = ({ placeData }) => {
       setLoading(true);
       const place = await getPlaceReview(placeData.id);
       setPlaceReview(place);
-    } catch (error) {
+    } catch (error: any) {
       setError({
         message: "Failed to fetch reviews",
         statusText: error.statusText,
         status: error.status,
         isError: true,
       });
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -48,7 +53,10 @@ const PlaceReviewSection = ({ placeData }) => {
     return (
       <section className="place_detail_section my-6">
         <h2 className="place-detail-spacer">Recommended Reviews</h2>
-        <p className="my-4"><strong>Note:</strong> Our reviews are a mix of user ratings and Google ratings to give you a comprehensive view.</p>
+        <p className="my-4">
+          <strong>Note:</strong> Our reviews are a mix of user ratings and
+          Google ratings to give you a comprehensive overview.
+        </p>
         <div className="flex gap-x-1">
           <Star className="w-4 fill-custom_accent inline-block" />
           <h3 className="">
@@ -64,41 +72,39 @@ const PlaceReviewSection = ({ placeData }) => {
         <div>
           {/* Render content when cleanbites reviews exist */}
           {placeReview.cleanbites_reviews.length > 0
-            ? placeReview.cleanbites_reviews.map((review) => (
-                <>
+            ? placeReview.cleanbites_reviews.map((review, index: number) => (
+                <React.Fragment key={`cleanbites-${index}`}>
                   <ReviewCard
                     author_name={`${review.user_first_name} ${review.user_last_name}`}
                     author_photo_url=""
                     datetime={review.last_update} // TODO: MAKE TIME RELATIVE
                     text={review.review}
                     rating={review.rating}
-                    key={review.id}
                   />
                   <Divider
                     axis="horizontal"
                     className="bg-slate-300 last:hidden"
                   />
-                </>
+                </React.Fragment>
               ))
             : null}
 
           {/* Render content when Google reviews exist */}
           {placeReview.google_reviews?.reviews.length > 0
-            ? placeReview.google_reviews.reviews.map((review) => (
-                <>
+            ? placeReview.google_reviews.reviews.map((review, index) => (
+                <React.Fragment key={`google-${index}`}>
                   <ReviewCard
                     author_name={review.author_name}
                     author_photo_url={review.profile_photo_url}
                     datetime={review.relative_time_description}
                     text={review.text}
                     rating={review.rating}
-                    key={review.relative_time_description}
                   />
                   <Divider
                     axis="horizontal"
                     className="bg-slate-300 last:hidden"
                   />
-                </>
+                </React.Fragment>
               ))
             : null}
 
@@ -121,7 +127,7 @@ const PlaceReviewSection = ({ placeData }) => {
 
   // display initial loading screen
   if (loading) {
-    return <div>I'm Loading review...</div>;
+    return <div>Review Loading...</div>;
   }
 
   // if error, display error to user
@@ -134,6 +140,8 @@ const PlaceReviewSection = ({ placeData }) => {
       />
     );
   }
+
+  return null;
 };
 
 export default PlaceReviewSection;

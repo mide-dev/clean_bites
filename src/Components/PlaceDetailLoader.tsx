@@ -1,10 +1,8 @@
 import { Skeleton } from "./ui/skeleton";
-import Header from "@/Components/Header";
 
 function PlaceDetailLoader() {
   return (
     <>
-      <Header className="hidden md:flex shrinked-container" />
       <section className="md:container shrinked-container flex flex-col md:my-4">
         {/* Image */}
         <div className="md:order-3">
@@ -27,8 +25,6 @@ function PlaceDetailLoader() {
             <Skeleton className="bg-gray-300 h-4 w-32" />
           </div>
           <Skeleton className="bg-gray-300 w-full h-5 rounded-full" />
-          {/* mobile-divider */}
-          {/* <Divider axis="horizontal" className="bg-slate-300 md:hidden" /> */}
         </div>
 
         {/* google review group */}

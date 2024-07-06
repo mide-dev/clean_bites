@@ -1,9 +1,5 @@
 import { useMemo, HTMLAttributes } from "react";
-import {
-  GoogleMap,
-  Marker,
-  useLoadScript,
-} from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 
 type MapProps = HTMLAttributes<HTMLHeadElement> & {
   latitude: number;

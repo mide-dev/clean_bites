@@ -1,10 +1,22 @@
-import { Card } from "./ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import profileImage from "../assets/profileImage.png";
 import Rating from "react-rating";
 import Star from "@/assets/Star";
 
-function ReviewCard({ author_photo_url, author_name, datetime, text, rating }) {
+interface ReviewCardProps {
+  author_photo_url: string;
+  author_name: string;
+  datetime: string;
+  text: string;
+  rating: number;
+}
+
+function ReviewCard({
+  author_photo_url,
+  author_name,
+  datetime,
+  text,
+  rating,
+}: ReviewCardProps) {
   return (
     <>
       <div className="flex gap-x-2 items-center my-4">

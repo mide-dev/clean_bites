@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from 'react';
-import { filterList } from './constants/filterItems';
+import { createContext, useContext, useState } from "react";
+import { filterList } from "./constants/filterItems";
 
 const FilterContext = createContext(null);
 
@@ -13,7 +13,9 @@ export const FilterContextProvider = ({ children }) => {
   };
 
   return (
-    <FilterContext.Provider value={{ selectedItem, onItemClicked: handleItemClick }}>
+    <FilterContext.Provider
+      value={{ selectedItem, onItemClicked: handleItemClick }}
+    >
       {children}
     </FilterContext.Provider>
   );

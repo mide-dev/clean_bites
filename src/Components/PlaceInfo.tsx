@@ -4,12 +4,13 @@ import HygieneIcon from "@/assets/hygieneIcon";
 import Divider from "@/Components/Divider";
 import Star from "@/assets/Star";
 import { UtensilsCrossed, PhoneCall } from "lucide-react";
+import { Place } from "@/constants/types";
 
-const PlaceInfo = ({ data }) => {
+const PlaceInfo = ({ data }: Place) => {
   // process & retrieve hygiene data
   const hygieneResult = useHygieneCheck(data?.hygiene_score);
 
-  const displayPriceLevel = (priceLevel) => {
+  const displayPriceLevel = (priceLevel: number) => {
     if (priceLevel == 0 || priceLevel == 1) {
       return "$";
     } else if (priceLevel == 2) {
@@ -85,7 +86,7 @@ const PlaceInfo = ({ data }) => {
             {data.google_review_score}{" "}
             <span className="px-[0.2rem] inline-block">&#8226;</span>
             <button className="underline inline-block">
-              {data.google_review_count} Google Reviews
+              {data.google_review_count} Reviews
             </button>
           </p>
         </div>
@@ -102,9 +103,6 @@ const PlaceInfo = ({ data }) => {
             ? "This place is currently opened"
             : "Not Opened at the moment"}
         </p>
-        <span>&#8226;</span>
-        {/* TODO: CREATE THE HOURS DIALOG */}
-        <button className="underline">See hours</button>
       </div>
       {/* contact call */}
       <div className="place_detail_section md:order-6">
