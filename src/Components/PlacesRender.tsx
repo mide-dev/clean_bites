@@ -8,7 +8,6 @@ import { CustomError } from "./Error";
 import { Link } from "react-router-dom";
 import { filterList } from "@/constants/filterItems";
 
-
 function Places() {
   const { selectedItem } = useFilterContext();
 
@@ -28,7 +27,6 @@ function Places() {
   };
 
   const [items, setItems] = useState(getItems.currentItem);
-  // const [pageNum, setPageNum] = useState(getItems.currentPage(selectedItem));
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({
@@ -39,6 +37,7 @@ function Places() {
   });
   const [lastElement, setLastElement] = useState(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
+  const [initialLoadState, setInitialLoadState] = useState({});
 
   // create an observer that will watch when last element is in view
   const observer = useRef(
@@ -64,7 +63,8 @@ function Places() {
       if (selectedItem == filterList[0].item) {
         placesFetch = await getPlaces(currentPage);
       } else {
-        placesFetch = await getPlaceSearch(selectedItem, currentPage);
+        const placeSearch = await getPlaceSearch(selectedItem, currentPage);
+        placesFetch = placeSearch.results;
       }
 
       sessionStorage.setItem(
@@ -96,6 +96,18 @@ function Places() {
 
   // call the function to fetch places only when pageNum changes
   useEffect(() => {
+    if (getItems.currentPage(selectedItem) === 0) {
+      setInitialLoadState((prevState) => ({
+        ...prevState,
+        [selectedItem]: true,
+      }));
+    } else {
+      setInitialLoadState((prevState) => ({
+        ...prevState,
+        [selectedItem]: false,
+      }));
+    }
+
     if (isIntersecting) {
       fetchPlaceData();
       setIsIntersecting(false);
@@ -104,6 +116,7 @@ function Places() {
     if (getItems.currentItem.length === 0) {
       fetchPlaceData();
     } else {
+      // setLoading(true);
       displaySelectedItem(selectedItem);
     }
   }, [isIntersecting, selectedItem]);
@@ -123,6 +136,10 @@ function Places() {
       }
     };
   }, [lastElement]);
+
+  if (loading && initialLoadState[selectedItem]) {
+    return <LoadingState />;
+  }
 
   // return places data
   if (items.length > 0) {
@@ -145,11 +162,6 @@ function Places() {
         <>{loading && <LoadingState />}</>
       </>
     );
-  }
-
-  // display initial loading screen
-  if (loading) {
-    return <LoadingState />;
   }
 
   // if error, display error to user
