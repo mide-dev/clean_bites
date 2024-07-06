@@ -2,10 +2,13 @@ import { useState } from "react";
 import SearchInput from "./SearchInput";
 import SearchAutocomplete from "./SearchAutocomplete";
 
-function SearchBar({ className }) {
+interface SearchBarProps {
+  className?: string;
+}
+
+function SearchBar({ className }: SearchBarProps) {
   const [searchAutocomplete, setSearchAutocomplete] = useState([]);
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [autoCompleteClicked, setAutoCompleteClicked] = useState(false);
 
   return (
     <div className={className}>
@@ -13,12 +16,12 @@ function SearchBar({ className }) {
         setSearchAutocomplete={setSearchAutocomplete}
         setIsInputFocused={setIsInputFocused}
       />
-      {/* {isInputFocused && ( */}
-      <SearchAutocomplete
-        results={searchAutocomplete}
-        isInputFocused={isInputFocused}
-      />
-      {/* )} */}
+      {isInputFocused && (
+        <SearchAutocomplete
+          results={searchAutocomplete}
+          setIsInputFocused={setIsInputFocused}
+        />
+      )}
     </div>
   );
 }

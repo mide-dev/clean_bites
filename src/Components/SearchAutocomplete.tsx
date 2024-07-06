@@ -1,29 +1,55 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import Divider from "./Divider";
-import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const SearchAutocomplete = ({ results }) => {
-  const { place_id } = useParams();
-  const [previousID, setPreviousID] = useState([]);
+interface Category {
+  name: string;
+}
 
+interface Place {
+  id: string;
+  business_name: string;
+}
+
+interface SearchResults {
+  categoriesAutocomplete: Category[];
+  placeAutocomplete: Place[];
+}
+
+interface SearchAutocompleteProps {
+  results: SearchResults;
+  setIsInputFocused: (focused: boolean) => void;
+}
+
+const SearchAutocomplete = ({
+  results,
+  setIsInputFocused,
+}: SearchAutocompleteProps) => {
+  const autocompleteRef = useRef(null);
+
+  // Hide autocomplete when clicking outside
   useEffect(() => {
-    setPreviousID((prev) => [...prev, place_id]);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        autocompleteRef.current &&
+        !autocompleteRef.current.contains(event.target)
+      ) {
+        setIsInputFocused(false);
+      }
+    };
 
-    // reload when place id changes
-    if (
-      previousID[previousID.length - 1] != previousID[previousID.length - 2]
-    ) {
-      window.location.reload();
-    }
-  }, [place_id]);
-
-
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setIsInputFocused]);
 
   return (
     (results.categoriesAutocomplete || results.placeAutocomplete) && (
       <div
+        ref={autocompleteRef}
         className="custom-scrollbar absolute rounded-md p-4 mt-4 border-[1px] bg-white z-10 w-52 lg:w-58 max-h-64 overflow-y-auto shadow
-      scrollbar-thin scrollbar-thumb scrollbar-track scrollbar-thumb-rounded"
+        scrollbar-thin scrollbar-thumb scrollbar-track scrollbar-thumb-rounded"
       >
         {results.categoriesAutocomplete.length > 0 && (
           <>
