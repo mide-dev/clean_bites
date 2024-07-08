@@ -1,13 +1,12 @@
-import { access } from "fs";
-import { Place } from "./types";
+import { BusinessData } from "./types";
 
 // set base url
 const baseURL = "https://cleanbites-backend.onrender.com/cleanbites_api/";
 
 /**
- * Fetch places from server
+ * Fetch BusinessDatas from server
  */
-export async function getPlaces(page = 0): Promise<Place[]> {
+export async function getPlaces(page = 0): Promise<BusinessData[]> {
   let response;
 
   if (page > 0) {
@@ -26,7 +25,7 @@ export async function getPlaces(page = 0): Promise<Place[]> {
   return data.results;
 }
 
-export async function getRecommendedPlaces(): Promise<Place[]> {
+export async function getRecommendedPlaces(): Promise<BusinessData[]> {
   const response = await fetch(`${baseURL}places/top/`);
 
   if (!response.ok) {
@@ -41,7 +40,7 @@ export async function getRecommendedPlaces(): Promise<Place[]> {
 }
 
 // Fetch detailed info for a place
-export async function getPlaceDetail(place_id) {
+export async function getPlaceDetail(place_id: string) {
   const response = await fetch(`${baseURL}places/${place_id}`);
   if (!response.ok) {
     throw {
@@ -77,7 +76,7 @@ export async function getPlaceSearch(query: string, page: number = 0) {
 }
 
 // autocomplete
-export async function getPlaceAutocomplete(query) {
+export async function getPlaceAutocomplete(query: string) {
   const response = await fetch(`${baseURL}places/autocomplete/?query=${query}`);
 
   if (!response.ok) {
@@ -88,7 +87,7 @@ export async function getPlaceAutocomplete(query) {
 }
 
 // Fetch reviews for a place
-export async function getPlaceReview(place_id) {
+export async function getPlaceReview(place_id: string) {
   const response = await fetch(`${baseURL}places/${place_id}/reviews`);
   if (!response.ok) {
     throw {
@@ -102,7 +101,7 @@ export async function getPlaceReview(place_id) {
 }
 
 // add reviews for a place
-export async function createReview(reviewData, accessToken) {
+export async function createReview(reviewData: any, accessToken: string) {
   try {
     const response = await fetch(`${baseURL}reviews/add/`, {
       method: "POST",
@@ -124,7 +123,11 @@ export async function createReview(reviewData, accessToken) {
 }
 
 // verify if user already created a review
-export async function verifyReview(user_id, place_id, accessToken) {
+export async function verifyReview(
+  user_id: string,
+  place_id: string,
+  accessToken: string
+) {
   try {
     const response = await fetch(
       `${baseURL}users/verifyreview/${user_id}/?place_id=${place_id}`,
@@ -145,13 +148,12 @@ export async function verifyReview(user_id, place_id, accessToken) {
       return "Unexpected response";
     }
   } catch (error) {
-    console.log("Error:", error);
     return "Network error: Please try again later";
   }
 }
 
 // add reviews for a place
-export async function getUserReviews(user_id, accessToken) {
+export async function getUserReviews(user_id: string, accessToken: string) {
   try {
     const response = await fetch(`${baseURL}users/${user_id}/reviews/`, {
       method: "GET",
@@ -169,10 +171,10 @@ export async function getUserReviews(user_id, accessToken) {
 
 // delete review for a place
 export async function deleteOrEditReview(
-  reviewId,
-  reviewData,
-  operation,
-  accessToken
+  reviewId: any,
+  reviewData: any,
+  operation: any,
+  accessToken: any
 ) {
   try {
     const method = operation === "delete" ? "DELETE" : "PUT";
@@ -192,7 +194,7 @@ export async function deleteOrEditReview(
 }
 
 // USER AUTH
-export async function getUserToken(email, password) {
+export async function getUserToken(email: string, password: string) {
   try {
     const response = await fetch(`${baseURL}token/`, {
       method: "POST",
@@ -221,7 +223,7 @@ export async function getUserToken(email, password) {
   }
 }
 
-export async function getNewAccessToken(refreshToken) {
+export async function getNewAccessToken(refreshToken: string) {
   try {
     const response = await fetch(`${baseURL}token/refresh/`, {
       method: "POST",
@@ -243,7 +245,7 @@ export async function getNewAccessToken(refreshToken) {
   }
 }
 
-export async function getCurrentUser(accessToken) {
+export async function getCurrentUser(accessToken: string) {
   try {
     const response = await fetch(
       `https://cleanbites-backend.onrender.com/auth/users/me/`,
@@ -266,7 +268,7 @@ export async function getCurrentUser(accessToken) {
   }
 }
 
-export async function createUser(userInfo) {
+export async function createUser(userInfo: any) {
   try {
     const response = await fetch(
       `https://cleanbites-backend.onrender.com/auth/users/`,
@@ -278,9 +280,6 @@ export async function createUser(userInfo) {
         body: JSON.stringify(userInfo),
       }
     );
-    // if (response.status === 400) {
-    //   return { error: "Unauthorized" }; // invalid/expired token
-    // }
 
     const data = await response.json();
     return data;

@@ -2,30 +2,34 @@ import { useState, useContext, useEffect } from "react";
 import { getPlaceDetail, getUserReviews } from "@/constants/api";
 import AuthContext from "@/AuthProvider";
 import PlacesCard from "@/Components/PlacesCard";
-import PlaceRecommendation from "@/Components/PlaceRecommendation";
 import LoadingState from "@/Components/LoadingState";
 import Divider from "@/Components/Divider";
 import DeleteReview from "@/Components/DeleteReview";
-import EditReview from "@/Components/EditReview";
+import { BusinessData } from "@/constants/types";
 
+type PlaceDataProp = {
+  place: BusinessData;
+  review: any;
+};
 const PlacesReviewed = () => {
   const { userData, isAuth } = useContext(AuthContext);
-  const [placeData, setPlaceData] = useState([]);
+  const [placeData, setPlaceData] = useState<PlaceDataProp[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  console.log(placeData);
   useEffect(() => {
     const fetchPlacesReviewed = async () => {
       try {
         setLoading(true);
         setError("");
-        if (isAuth.accessToken) {
+        if (isAuth?.accessToken) {
           const placesReviewed = await getUserReviews(
-            userData.id,
+            userData!.id!,
             isAuth.accessToken
           );
           const placeDataArray = await Promise.all(
-            placesReviewed.map(async (review) => {
+            placesReviewed.map(async (review: any) => {
               const placeDetails = await getPlaceDetail(review.place_id);
               return { review, place: placeDetails };
             })
@@ -42,7 +46,7 @@ const PlacesReviewed = () => {
     };
 
     fetchPlacesReviewed();
-  }, [userData.id]);
+  }, [userData?.id]);
 
   if (loading) {
     return (
@@ -66,7 +70,7 @@ const PlacesReviewed = () => {
         <h2>Places You've Reviewed</h2>
         <Divider axis={"horizontal"} />
         <div className="places-grid">
-          {placeData.map((place, index) => (
+          {placeData.map((place: PlaceDataProp) => (
             <div key={place.place.id}>
               <PlacesCard
                 {...place.place}
@@ -76,7 +80,7 @@ const PlacesReviewed = () => {
               <div className="flex justify-evenly mx-8">
                 <DeleteReview
                   reviewId={place.review.id}
-                  accessToken={isAuth.accessToken}
+                  accessToken={isAuth?.accessToken}
                 />
               </div>
             </div>

@@ -38,7 +38,7 @@ function PrevArrow({ onClick, arrowStyle }: ArrowProps) {
 }
 
 type ImageScrollProps = HTMLAttributes<HTMLDivElement> & {
-  images: { image: string }[];
+  images: any;
   leftArrowStyle?: string;
   rightArrowStyle?: string;
   scrollSpeed: number;
@@ -61,11 +61,11 @@ function ImageSlider({
     infinite: true,
     speed: scrollSpeed,
     slidesToShow: 1,
-    arrows: { displayScrollBtn },
+    arrows: displayScrollBtn,
     slidesToScroll: 1,
-    nextArrow: <NextArrow rightArrowStyle={rightArrowStyle} />,
-    prevArrow: <PrevArrow leftArrowStyle={leftArrowStyle} />,
-    customPaging: (i) => {
+    nextArrow: <NextArrow arrowStyle={rightArrowStyle} />,
+    prevArrow: <PrevArrow arrowStyle={leftArrowStyle} />,
+    customPaging: (i: number) => {
       //  set opacity for each dot based on whether it's the active slide
       const opacity = currentSlide === i ? 1 : 0.5;
 
@@ -76,7 +76,7 @@ function ImageSlider({
         ></div>
       );
     },
-    afterChange: (index) => {
+    afterChange: (index: number) => {
       // Update the current slide index when the slide changes
       setCurrentSlide(index);
     },
@@ -91,9 +91,9 @@ function ImageSlider({
   };
 
   // render image
-  const renderImages = (imgArr) => {
+  const renderImages = (imgArr: any[]) => {
     if (imgArr && imgArr.length > 0) {
-      return imgArr.map((img) => (
+      return imgArr.map((img: any) => (
         <div key={img} className="focus:outline-none">
           <img src={img} className={`${className} object-cover`} />
         </div>

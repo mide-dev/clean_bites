@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import Rating from "react-rating";
+import Rating from "./Rating";
 import Star from "@/assets/Star";
 
 interface ReviewCardProps {

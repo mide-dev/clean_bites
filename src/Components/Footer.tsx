@@ -16,17 +16,17 @@ function Footer({ className }: HTMLAttributes<HTMLDivElement>) {
   const handleLogout = () => {
     deleteCookie("accessToken");
     deleteCookie("refreshToken");
-    setIsAuth({});
+    setIsAuth!({});
     navigate("/");
   };
 
   useEffect(() => {
-    if (isAuth.accessToken) {
+    if (isAuth?.accessToken) {
       setLogedIn(true);
     } else {
       setLogedIn(false);
     }
-  }, [isAuth.accessToken]);
+  }, [isAuth?.accessToken]);
 
   return (
     <div className="sticky bottom-0 bg-white w-full mt-10 lg:mt-20">

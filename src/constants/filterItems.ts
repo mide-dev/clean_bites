@@ -27,8 +27,9 @@ import { GiBowlOfRice } from "react-icons/gi";
 import { PiCookingPot } from "react-icons/pi";
 import { GiSushis } from "react-icons/gi";
 import { GiNoodles } from "react-icons/gi";
+import { FilterItem } from "@/Components/RenderFilters";
 
-export const filterList = [
+export const filterList: FilterItem[] = [
   { id: "1", item: "Places", icon: UtensilsCrossed },
   { id: "2", item: "Cafe", icon: Coffee },
   { id: "3", item: "Bar", icon: Wine },

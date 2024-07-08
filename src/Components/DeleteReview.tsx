@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 import { deleteOrEditReview } from "@/constants/api";
 import {
   Dialog,
@@ -9,11 +9,11 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-} from "@/components/ui/dialog";
+} from "@/Components/ui/dialog";
 
 interface DeleteReviewProps {
   reviewId: string;
-  accessToken: string;
+  accessToken?: string;
 }
 
 function DeleteReview({ reviewId, accessToken }: DeleteReviewProps) {

@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { getRecommendedPlaces } from "@/constants/api";
 import { useNavigate } from "react-router-dom";
 import LoadingState from "./LoadingState";
-import { Place } from "@/constants/types";
+import { BusinessData } from "@/constants/types";
 
 function PlaceRecommendation() {
-  const [placeData, setPlaceData] = useState<Place[]>([]);
+  const [placeData, setPlaceData] = useState<BusinessData[]>([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ function PlaceRecommendation() {
     })();
   }, []);
 
-  const handleNavigation = (id: number) => {
+  const handleNavigation = (id: string) => {
     navigate(`/places/${id}`);
     window.location.reload();
   };

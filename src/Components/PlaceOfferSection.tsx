@@ -1,9 +1,13 @@
 import Map from "@/Components/Map/Map";
 import PlaceOffers from "@/Components/PlaceOffers";
 import Divider from "@/Components/Divider";
-import { Offers } from "@/constants/types";
+import { BusinessData } from "@/constants/types";
 
-const PlaceOfferSection = ({ data }: Offers) => {
+type PlaceOfferProp = {
+  data: BusinessData;
+};
+
+const PlaceOfferSection = ({ data }: PlaceOfferProp) => {
   return (
     <>
       {/* PLACE OFFERS */}

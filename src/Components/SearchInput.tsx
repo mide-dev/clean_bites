@@ -8,12 +8,12 @@ interface SearchInputProps extends HTMLAttributes<HTMLDivElement> {
   setIsInputFocused: (focused: boolean) => void;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({
+const SearchInput = ({
   setSearchAutocomplete,
   setIsInputFocused,
   className,
   ...props
-}) => {
+}: SearchInputProps) => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 

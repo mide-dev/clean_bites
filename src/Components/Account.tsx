@@ -1,7 +1,7 @@
 import { HTMLAttributes, useContext, useEffect } from "react";
 import Profile from "./Profile";
 import { NavLink, useNavigate } from "react-router-dom";
-import AuthContext from "@/AuthProvider";
+import AuthContext, { AuthContextType } from "@/AuthProvider";
 import { getCookie, deleteCookie } from "../Pages/auth/utils";
 import { getCurrentUser, getNewAccessToken } from "@/constants/api";
 import {
@@ -13,17 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
-type AuthContextType = {
-  isAuth: {
-    accessToken?: string;
-    refreshToken?: string;
-  };
-  setIsAuth: (auth: { accessToken: string; refreshToken: string }) => void;
-  userData?: any;
-};
-
 function Account({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
-  const { isAuth, setIsAuth, userData } =
+  const { isAuth, setIsAuth }: AuthContextType =
     useContext<AuthContextType>(AuthContext);
   const navigate = useNavigate();
 
@@ -33,16 +24,16 @@ function Account({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
         const accessToken = getCookie("accessToken");
         const refreshToken = getCookie("refreshToken");
 
-        if (accessToken && !isAuth.accessToken) {
+        if (accessToken && !isAuth!.accessToken) {
           const currentUser = await getCurrentUser(accessToken);
           if (currentUser.id) {
-            setIsAuth({ accessToken, refreshToken });
+            setIsAuth!({ accessToken, refreshToken });
           } else {
-            const getNewTokens = await getNewAccessToken(refreshToken);
+            const getNewTokens = await getNewAccessToken(refreshToken!);
             if (getNewTokens.access) {
               const newAccessToken = getNewTokens.access;
               const newRefreshToken = getNewTokens.refresh;
-              setIsAuth({
+              setIsAuth!({
                 accessToken: newAccessToken,
                 refreshToken: newRefreshToken,
               });
@@ -58,7 +49,7 @@ function Account({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   const handleLogout = () => {
     deleteCookie("accessToken");
     deleteCookie("refreshToken");
-    setIsAuth({ accessToken: "", refreshToken: "" });
+    setIsAuth!({ accessToken: "", refreshToken: "" });
     navigate("/");
   };
 
@@ -70,7 +61,7 @@ function Account({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="font-poppins w-56 mr-4 mt-2 hidden sm:block">
           <DropdownMenuGroup>
-            {!isAuth.accessToken ? (
+            {!isAuth?.accessToken ? (
               <>
                 <DropdownMenuItem className="py-2 cursor-pointer">
                   <NavLink to="login" className="w-full">

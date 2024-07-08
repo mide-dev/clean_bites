@@ -1,19 +1,17 @@
 import { useState } from "react";
 import { useFilterContext } from "../FilterContext";
-import { IconType } from "react-icons";
-
-interface FilterItem {
+export interface FilterItem {
   id: string;
   item: string;
-  icon: IconType;
+  icon: any;
 }
 
-interface RenderFiltersProps {
+export interface RenderFiltersProps {
   list: FilterItem[];
 }
 
 function RenderFilters({ list }: RenderFiltersProps) {
-  const { onItemClicked } = useFilterContext();
+  const { onItemClicked }: any = useFilterContext();
   const [currentItemId, setCurrentItemId] = useState(list[0]?.id || "");
 
   return (

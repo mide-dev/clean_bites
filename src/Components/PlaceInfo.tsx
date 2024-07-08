@@ -1,12 +1,16 @@
 import ImageSlider from "../Components/ImageSlider";
-import { useHygieneCheck, HygieneProp } from "../constants/HygieneCheck";
+import { useHygieneCheck } from "../constants/HygieneCheck";
 import HygieneIcon from "@/assets/hygieneIcon";
 import Divider from "@/Components/Divider";
 import Star from "@/assets/Star";
 import { UtensilsCrossed, PhoneCall } from "lucide-react";
-import { Place } from "@/constants/types";
+import { BusinessData } from "@/constants/types";
 
-const PlaceInfo = ({ data }: Place) => {
+type PlaceInfoProp = {
+  data: BusinessData;
+};
+
+const PlaceInfo = ({ data }: PlaceInfoProp) => {
   // process & retrieve hygiene data
   const hygieneResult = useHygieneCheck(data?.hygiene_score);
 

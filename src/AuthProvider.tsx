@@ -2,18 +2,18 @@ import { createContext, useState, useEffect, ReactNode } from "react";
 import { setCookie } from "./Pages/auth/utils";
 import { getCurrentUser } from "./constants/api";
 
-interface AuthContextType {
-  isAuth: AuthState;
-  setIsAuth: (authState: AuthState) => void;
-  userData: UserData;
+export interface AuthContextType {
+  isAuth?: AuthState;
+  setIsAuth?: (authState: AuthState) => void;
+  userData?: UserData;
 }
 
-interface AuthState {
+export interface AuthState {
   accessToken?: string;
   refreshToken?: string;
 }
 
-interface UserData {
+export interface UserData {
   id?: string;
   email?: string;
   first_name?: string;
@@ -24,7 +24,7 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType>({});
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [isAuth, setIsAuth] = useState<AuthState>({});

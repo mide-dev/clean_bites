@@ -1,6 +1,6 @@
 import { useState, useContext, SetStateAction } from "react";
 import { Button } from "@/Components/ui/button";
-import Rating from "react-rating";
+import Rating from "./Rating";
 import ReviewButton from "../Components/ReviewButton";
 import Star from "@/assets/Star";
 import { ChevronRight } from "lucide-react";
@@ -14,10 +14,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/Components/ui/dialog";
 
 type ReviewPopupType = {
-  place_id: number;
+  place_id: string;
   business_name: string;
 };
 
@@ -53,9 +53,9 @@ const ReviewPopup = ({ place_id, business_name }: ReviewPopupType) => {
       }
 
       const isPlaceAlreadyReviewed = await verifyReview(
-        userData.id,
+        userData!.id!,
         place_id,
-        isAuth.accessToken
+        isAuth!.accessToken!
       );
       if (isPlaceAlreadyReviewed === "review found") {
         setIsError(
@@ -70,13 +70,13 @@ const ReviewPopup = ({ place_id, business_name }: ReviewPopupType) => {
         rating: rating,
       };
 
-      const submitreview = await createReview(reviewData, isAuth.accessToken);
+      const submitreview = await createReview(reviewData, isAuth!.accessToken!);
 
       if (submitreview.error) {
         setIsError(submitreview.error);
         return;
       }
-    } catch (error) {
+    } catch (error: any) {
       setIsError(error);
     } finally {
       setLoading(false);
@@ -115,7 +115,7 @@ const ReviewPopup = ({ place_id, business_name }: ReviewPopupType) => {
           </DialogTitle>
           <DialogDescription className="w-full">
             <textarea
-              rows="10"
+              rows={10}
               className="border-[1px] border-gray-400 rounded-md p-2 w-full focus:outline-none text-black"
               value={reviewText}
               onChange={handleReviewChange}

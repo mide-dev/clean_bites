@@ -1,24 +1,25 @@
 export function setCookie(
   name: string,
-  value: string | null,
-  daysToLive: number | null
+  value: string | undefined,
+  daysToLive: number | undefined
 ): void {
   const date = new Date();
-  if (daysToLive !== null) {
+  if (daysToLive !== undefined) {
     date.setTime(date.getTime() + daysToLive * 24 * 60 * 60 * 1000);
   }
-  const expires = daysToLive !== null ? `expires=${date.toUTCString()}` : "";
+  const expires =
+    daysToLive !== undefined ? `expires=${date.toUTCString()}` : "";
   document.cookie = `${name}=${value}; ${expires}`;
 }
 
 export function deleteCookie(name: string): void {
-  setCookie(name, null, -1);
+  setCookie(name, undefined, -1);
 }
 
-export function getCookie(name: string): string | null {
+export function getCookie(name: string): string | undefined {
   const cDecode = decodeURIComponent(document.cookie);
   const cArray = cDecode.split("; ");
-  let result: string | null = null;
+  let result: string | undefined = undefined;
 
   cArray.forEach((element) => {
     if (element.indexOf(name + "=") === 0) {

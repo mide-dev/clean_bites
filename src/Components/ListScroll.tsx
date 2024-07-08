@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, HTMLAttributes } from "react";
 import BlurFilter from "./BlurFilter";
-import RenderFilters from "./RenderFilters";
+import RenderFilters, { FilterItem } from "./RenderFilters";
 import ScrollBtn from "./ScrollBtn";
 
 const SCROLL_SPEED = 500;
@@ -8,7 +8,7 @@ const BUTTON_STYLES = "border-[1px] border-gray-200";
 const DISPLAY_STYLE = "hidden md:block";
 
 type ListScrollProps = HTMLAttributes<HTMLDivElement> & {
-  items?: { item: string }[];
+  items: FilterItem[];
 };
 
 function ListScroll({ items }: ListScrollProps) {

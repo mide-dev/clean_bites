@@ -7,7 +7,7 @@ import Divider from "@/Components/Divider";
 import PlaceOfferSection from "../Components/PlaceOfferSection";
 import PlaceReviewSection from "../Components/PlaceReviewSection";
 import { getPlaceDetail } from "../constants/api";
-import PlaceDetailLoader from "@/Components/placeDetailLoader";
+import PlaceDetailLoader from "../Components/PlaceDetailLoader";
 
 function PlaceDetail() {
   const params = useParams();
@@ -23,9 +23,11 @@ function PlaceDetail() {
   // fetch place detail.
   const fetchPlaceDetail = async () => {
     try {
-      setLoading(true);
-      const place = await getPlaceDetail(params.place_id);
-      setPlaceDetail(place);
+      if (params.place_id) {
+        setLoading(true);
+        const place = await getPlaceDetail(params.place_id);
+        setPlaceDetail(place);
+      }
     } catch (error: any) {
       setError({
         message: "Failed to fetch Places",

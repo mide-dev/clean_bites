@@ -1,12 +1,12 @@
 import { forwardRef, useState, useEffect, HTMLAttributes } from "react";
 import HygieneIcon from "@/assets/hygieneIcon";
 import Star from "@/assets/Star";
-import { Place } from "@/constants/types";
+import { BusinessData } from "@/constants/types";
 import { useHygieneCheck, HygieneProp } from "../constants/HygieneCheck";
 import ImageSlider from "./ImageSlider";
 
 type PlaceProp = HTMLAttributes<HTMLDivElement> &
-  Place & {
+  BusinessData & {
     backround?: boolean;
   };
 

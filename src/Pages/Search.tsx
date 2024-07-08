@@ -11,11 +11,11 @@ import {
   PaginationContent,
   PaginationItem,
   PaginationNext,
-} from "@/components/ui/pagination";
-import { Place } from "@/constants/types";
+} from "@/Components/ui/pagination";
+import { BusinessData } from "@/constants/types";
 
 interface FetchResult {
-  results: Place[];
+  results: BusinessData[];
   next: string | null;
   previous: string | null;
 }
@@ -28,9 +28,8 @@ interface ErrorState {
 }
 
 function Search() {
-  const [items, setItems] = useState<Place[]>([]);
+  const [items, setItems] = useState<BusinessData[]>([]);
   const [nextResult, setNextResult] = useState<string | null>(null);
-  const [previousResult, setPreviousResult] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<ErrorState>({
     message: "",
@@ -45,10 +44,11 @@ function Search() {
   const fetchPlaceSearch = async () => {
     setLoading(true);
     try {
-      const resultsFetch: FetchResult = await getPlaceSearch(queryParam);
-      setItems(resultsFetch.results);
-      setNextResult(resultsFetch.next);
-      setPreviousResult(resultsFetch.previous);
+      if (queryParam) {
+        const resultsFetch: FetchResult = await getPlaceSearch(queryParam);
+        setItems(resultsFetch.results);
+        setNextResult(resultsFetch.next);
+      }
     } catch (error: any) {
       setError({
         message: error.message,
@@ -76,7 +76,6 @@ function Search() {
       const data: FetchResult = await response.json();
       setItems((prev) => [...prev, ...data.results]);
       setNextResult(data.next);
-      setPreviousResult(data.previous);
     } catch (error: any) {
       setError({
         message: error.message,

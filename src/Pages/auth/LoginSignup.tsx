@@ -1,8 +1,8 @@
-import { useState, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { createUser, getUserToken } from "@/constants/api";
 import AuthContext from "@/AuthProvider";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,18 +10,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "@/Components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/ui/tabs";
 
 const LoginSignup = () => {
   const { setIsAuth } = useContext(AuthContext);
-  const userRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [defaultValue, setDefaultValue] = useState(
-    location.pathname === "/signup" ? "signup" : "signin"
-  );
+  const defaultValue = location.pathname === "/signup" ? "signup" : "signin";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -32,7 +29,7 @@ const LoginSignup = () => {
   const [searchParams] = useSearchParams();
   const signupStatus = searchParams.get("signup");
 
-  const handleSignIn = async (event) => {
+  const handleSignIn = async (event: any) => {
     event.preventDefault();
     setLoginErrMsg(""); // Clear previous error message
     const data = await getUserToken(email, password);
@@ -40,7 +37,7 @@ const LoginSignup = () => {
       // the request resolved successfully if access is present.
       const accessToken = data.access;
       const refreshToken = data.refresh;
-      setIsAuth({ accessToken, refreshToken });
+      setIsAuth!({ accessToken, refreshToken });
       navigate("/");
     } else {
       // else we know there is an error
@@ -55,7 +52,7 @@ const LoginSignup = () => {
     last_name: lastName,
   };
 
-  const handleSignup = async (event: MouseEvent) => {
+  const handleSignup = async (event: any) => {
     event.preventDefault();
     setSignupErrMsg(""); // Clear previous error message
     const data = await createUser(userInfo);
@@ -99,7 +96,6 @@ const LoginSignup = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
-                    ref={userRef}
                     required
                     className="p-3 border-[1.5px] w-full rounded-md mb-6"
                   />
@@ -144,7 +140,6 @@ const LoginSignup = () => {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder="First Name"
-                    ref={userRef}
                     required
                     className="p-3 border-[1.5px] w-full rounded-md mb-6"
                   />
@@ -155,7 +150,6 @@ const LoginSignup = () => {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="Last Name"
-                    ref={userRef}
                     required
                     className="p-3 border-[1.5px] w-full rounded-md mb-6"
                   />
@@ -166,7 +160,6 @@ const LoginSignup = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
-                    ref={userRef}
                     required
                     className="p-3 border-[1.5px] w-full rounded-md mb-6"
                   />

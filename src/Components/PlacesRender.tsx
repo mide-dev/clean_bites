@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useFilterContext } from "../FilterContext";
 import PlacesCard from "./PlacesCard";
-import { Place as PlaceProp } from "@/constants/types";
 import LoadingState from "./LoadingState";
 import { getPlaces, getPlaceSearch } from "../constants/api";
 import { CustomError } from "./Error";
@@ -12,7 +11,8 @@ function Places() {
   const { selectedItem } = useFilterContext();
 
   const getItems = {
-    currentItem: JSON.parse(sessionStorage.getItem(selectedItem)) || [],
+    currentItem:
+      JSON.parse(sessionStorage.getItem(selectedItem) as string) || [],
 
     currentPage: (item: string) => {
       const currentItem = sessionStorage.getItem(`${item}_page`);
@@ -22,7 +22,7 @@ function Places() {
 
       sessionStorage.setItem(`${item}_page`, JSON.stringify(0));
 
-      return JSON.parse(sessionStorage.getItem(`${item}_page`));
+      return JSON.parse(sessionStorage.getItem(`${item}_page`) as string);
     },
   };
 
@@ -37,7 +37,7 @@ function Places() {
   });
   const [lastElement, setLastElement] = useState(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const [initialLoadState, setInitialLoadState] = useState({});
+  const [initialLoadState, setInitialLoadState] = useState<any>({});
 
   // create an observer that will watch when last element is in view
   const observer = useRef(
@@ -76,9 +76,8 @@ function Places() {
         `${selectedItem}_page`,
         JSON.stringify(currentPage)
       );
-      setItems(JSON.parse(sessionStorage.getItem(selectedItem)));
-      setPageNum(JSON.parse(sessionStorage.getItem(`${selectedItem}_page`)));
-    } catch (error) {
+      setItems(JSON.parse(sessionStorage.getItem(selectedItem) as string));
+    } catch (error: any) {
       setError({
         message: error.message,
         statusText: error.statusText,
@@ -90,19 +89,19 @@ function Places() {
     }
   };
 
-  const displaySelectedItem = (item) => {
-    setItems(JSON.parse(sessionStorage.getItem(item)));
+  const displaySelectedItem = (item: any) => {
+    setItems(JSON.parse(sessionStorage.getItem(item) as string));
   };
 
   // call the function to fetch places only when pageNum changes
   useEffect(() => {
     if (getItems.currentPage(selectedItem) === 0) {
-      setInitialLoadState((prevState) => ({
+      setInitialLoadState((prevState: any) => ({
         ...prevState,
         [selectedItem]: true,
       }));
     } else {
-      setInitialLoadState((prevState) => ({
+      setInitialLoadState((prevState: any) => ({
         ...prevState,
         [selectedItem]: false,
       }));
@@ -146,7 +145,7 @@ function Places() {
     return (
       <>
         <div className="places-grid">
-          {items.map((place, index) => (
+          {items.map((place: any, index: number) => (
             <Link
               to={`/places/${place.id}`}
               key={`${selectedItem}_${place.id}`}

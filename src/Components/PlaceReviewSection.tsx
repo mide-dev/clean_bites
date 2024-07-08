@@ -10,14 +10,14 @@ import Divider from "@/Components/Divider";
 import { getPlaceReview } from "../constants/api";
 import { CustomError } from "../Components/Error";
 import ReviewPopup from "./ReviewPopup";
-import { Place } from "@/constants/types";
+import { BusinessData } from "@/constants/types";
 
 interface PlaceReviewSectionProps {
-  placeData: Place;
+  placeData: BusinessData;
 }
 
 const PlaceReviewSection = ({ placeData }: PlaceReviewSectionProps) => {
-  const [placeReview, setPlaceReview] = useState(null);
+  const [placeReview, setPlaceReview] = useState<BusinessData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({
     message: "",

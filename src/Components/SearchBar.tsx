@@ -1,13 +1,16 @@
 import { useState } from "react";
 import SearchInput from "./SearchInput";
-import SearchAutocomplete from "./SearchAutocomplete";
+import SearchAutocomplete, { SearchResults } from "./SearchAutocomplete";
 
 interface SearchBarProps {
   className?: string;
 }
 
+type SearchResultsOrEmpty = SearchResults | [];
+
 function SearchBar({ className }: SearchBarProps) {
-  const [searchAutocomplete, setSearchAutocomplete] = useState([]);
+  const [searchAutocomplete, setSearchAutocomplete] =
+    useState<SearchResultsOrEmpty>([]);
   const [isInputFocused, setIsInputFocused] = useState(false);
 
   return (

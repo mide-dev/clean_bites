@@ -1,14 +1,26 @@
-import { createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 import { filterList } from "./constants/filterItems";
+import { FilterItem } from "./Components/RenderFilters";
 
-const FilterContext = createContext(null);
+interface FilterContextType {
+  selectedItem: FilterItem;
+  onItemClicked: (item: FilterItem) => void;
+}
 
-export const useFilterContext = () => useContext(FilterContext);
+const FilterContext = createContext<FilterContextType | null>(null);
 
-export const FilterContextProvider = ({ children }) => {
-  const [selectedItem, setSelectedItem] = useState(filterList[0].item);
+export const useFilterContext = () => useContext<any>(FilterContext);
 
-  const handleItemClick = (item) => {
+interface FilterContextProviderProps {
+  children: ReactNode;
+}
+
+export const FilterContextProvider = ({
+  children,
+}: FilterContextProviderProps) => {
+  const [selectedItem, setSelectedItem] = useState<any>(filterList[0].item);
+
+  const handleItemClick = (item: FilterItem) => {
     setSelectedItem(item);
   };
 
