@@ -18,7 +18,7 @@ function Map({ className, latitude, longitude, title }: MapProps) {
   );
   const options = useMemo<MapOptions>(
     () => ({
-      mapId: "acf0cee82df6cc02",
+      mapId: "2af69eb095a48093",
       zoomControl: false,
       minZoom: 16,
       maxZoom: 16,
