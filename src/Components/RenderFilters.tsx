@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useFilterContext } from "../FilterContext";
+
 export interface FilterItem {
   id: string;
   item: string;

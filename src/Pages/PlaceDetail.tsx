@@ -8,6 +8,7 @@ import PlaceOfferSection from "../Components/PlaceOfferSection";
 import PlaceReviewSection from "../Components/PlaceReviewSection";
 import { getPlaceDetail } from "../constants/api";
 import PlaceDetailLoader from "../Components/PlaceDetailLoader";
+import { Helmet } from "react-helmet";
 
 function PlaceDetail() {
   const params = useParams();
@@ -48,6 +49,9 @@ function PlaceDetail() {
   if (placeDetail) {
     return (
       <>
+        <Helmet>
+          <meta name="robots" content="noindex" />
+        </Helmet>
         <Divider axis="horizontal" className="hidden md:block" />
         <main className="md:container shrinked-container text-sm mb-10">
           <PlaceInfo data={placeDetail} />

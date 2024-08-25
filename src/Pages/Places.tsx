@@ -5,6 +5,7 @@ import Header from "@/Components/Header";
 import PlacesRender from "@/Components/PlacesRender";
 import Footer from "@/Components/Footer";
 import Divider from "@/Components/Divider";
+import { Helmet } from "react-helmet";
 
 function Places() {
   const headerRef = useRef<HTMLUListElement | null>(null);
@@ -30,6 +31,9 @@ function Places() {
 
   return (
     <>
+      <Helmet>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <FilterContextProvider>
         {/* used fixed on sm screens to avoid header jittering on scroll*/}
         {/* used sticky on lg screens to avoid header width glitch */}
